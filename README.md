@@ -4,25 +4,19 @@
 <img src="assets/generated/header-telemetry.svg" alt="GitHub Telemetry — real-time metrics" width="880"/>
 <br/>
 <a href="https://github.com/mykcodes">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=mykcodes&theme=transparent&hide_border=true&date_format=j%20M%5B%20Y%5D&ring=64FFDA&fire=64FFDA&currStreakLabel=64FFDA&sideLabels=8B949E&currStreakNum=E6EDF3&sideNums=E6EDF3&dates=484F58&stroke=21262D&background=161B22" alt="GitHub contribution streak" width="880"/>
+  <img src="https://streak-stats.demolab.com?user=mykcodes&theme=black-ice&hide_border=false&border_radius=10&card_width=880&card_height=220" alt="GitHub contribution streak" width="880" height="220"/>
 </a>
 <br/>
 <img src="assets/generated/header-stats.svg" alt="GitHub Statistics — performance overview" width="880"/>
 <br/>
-<table>
-<tr>
-<td width="50%" align="center">
+<sub>
+  <a href="https://github.com/mykcodes" align="middle">
+    <img src="https://github-readme-stats-fast.vercel.app/api?username=mykcodes&show_icons=true&theme=dark&card_width=600&line_height=25&bg_color=151B23&hide_border=true" alt="GitHub Stats" height="170" width="350"/>
+  </a> &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/mykcodes">
-    <img src="https://github-readme-stats.vercel.app/api?username=mykcodes&show_icons=true&hide_border=true&bg_color=161B22&title_color=64FFDA&text_color=8B949E&icon_color=82AAFF&include_all_commits=true&count_private=true" alt="GitHub Stats" width="430"/>
+    <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=mykcodes&layout=compact&theme=dark&card_width=440&bg_color=151B23&hide_border=true" alt="Most Used Languages" height="170" width="350"/>
   </a>
-</td>
-<td width="50%" align="center">
-  <a href="https://github.com/mykcodes">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mykcodes&layout=compact&hide_border=true&bg_color=161B22&title_color=64FFDA&text_color=8B949E&langs_count=8" alt="Most Used Languages" width="430"/>
-  </a>
-</td>
-</tr>
-</table>
+</sub>
 <br/>
 <img src="assets/generated/header-toolkit.svg" alt="Toolkit Map — active technologies" width="880"/>
 <br/>
@@ -34,9 +28,15 @@
 <br/>
 
 <picture>
+<<<<<<< HEAD
   <source media="(prefers-color-scheme: dark)" srcset="assets/generated/github-snake-dark.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="assets/generated/github-snake.svg"/>
   <img alt="GitHub contribution graph — snake animation" src="assets/generated/github-snake-dark.svg" width="880"/>
+=======
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake.svg"/>
+  <img src="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg" alt="GitHub contribution graph — snake animation" width="880"/>
+>>>>>>> e0b03b9de57b292d1292403a7c554ae8ea813e9b
 </picture>
 
 <br/> 
