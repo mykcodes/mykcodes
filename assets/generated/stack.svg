@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="412" viewBox="0 0 880 412">
+  <rect width="880" height="412" rx="8" fill="#161B22" stroke="#21262D" stroke-width="0.5"/>
+  <text x="24" y="26" fill="#484F58" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="2">TOOLKIT.MAP</text>
+  <line x1="24" y1="36" x2="856" y2="36" stroke="#21262D" stroke-width="0.4"/>
+  <circle cx="32" cy="58" r="2.5" fill="#64FFDA" opacity="0.8"/>
+  <text x="44" y="62" fill="#64FFDA" font-family="'SF Mono',monospace" font-size="9.5" letter-spacing="1.5" font-weight="600">LANGUAGES</text>
+  <rect x="44" y="67" width="34.6" height="17" rx="3" fill="#64FFDA" opacity="0.07" stroke="#64FFDA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="52" y="79" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">C++</text>
+  <rect x="83.6" y="67" width="53.2" height="17" rx="3" fill="#64FFDA" opacity="0.07" stroke="#64FFDA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="91.6" y="79" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Python</text>
+  <rect x="141.8" y="67" width="40.8" height="17" rx="3" fill="#64FFDA" opacity="0.07" stroke="#64FFDA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="149.8" y="79" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Java</text>
+  <rect x="187.60000000000002" y="67" width="40.8" height="17" rx="3" fill="#64FFDA" opacity="0.07" stroke="#64FFDA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="195.60000000000002" y="79" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Dart</text>
+  <rect x="233.40000000000003" y="67" width="78.0" height="17" rx="3" fill="#64FFDA" opacity="0.07" stroke="#64FFDA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="241.40000000000003" y="79" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">JavaScript</text>
+  <rect x="316.40000000000003" y="67" width="78.0" height="17" rx="3" fill="#64FFDA" opacity="0.07" stroke="#64FFDA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="324.40000000000003" y="79" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">TypeScript</text>
+  <line x1="44" y1="92" x2="856" y2="92" stroke="#21262D" stroke-width="0.3"/>
+  <circle cx="32" cy="108" r="2.5" fill="#82AAFF" opacity="0.8"/>
+  <text x="44" y="112" fill="#82AAFF" font-family="'SF Mono',monospace" font-size="9.5" letter-spacing="1.5" font-weight="600">INTERFACE</text>
+  <rect x="44" y="117" width="59.4" height="17" rx="3" fill="#82AAFF" opacity="0.07" stroke="#82AAFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="52" y="129" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Flutter</text>
+  <rect x="108.4" y="117" width="47.0" height="17" rx="3" fill="#82AAFF" opacity="0.07" stroke="#82AAFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="116.4" y="129" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">React</text>
+  <rect x="160.4" y="117" width="40.8" height="17" rx="3" fill="#82AAFF" opacity="0.07" stroke="#82AAFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="168.4" y="129" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">HTML</text>
+  <rect x="206.2" y="117" width="34.6" height="17" rx="3" fill="#82AAFF" opacity="0.07" stroke="#82AAFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="214.2" y="129" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">CSS</text>
+  <rect x="245.79999999999998" y="117" width="90.4" height="17" rx="3" fill="#82AAFF" opacity="0.07" stroke="#82AAFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="253.79999999999998" y="129" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">UI/UX Design</text>
+  <line x1="44" y1="142" x2="856" y2="142" stroke="#21262D" stroke-width="0.3"/>
+  <circle cx="32" cy="158" r="2.5" fill="#C792EA" opacity="0.8"/>
+  <text x="44" y="162" fill="#C792EA" font-family="'SF Mono',monospace" font-size="9.5" letter-spacing="1.5" font-weight="600">BACKEND &amp; SYSTEMS</text>
+  <rect x="44" y="167" width="59.4" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="52" y="179" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">FastAPI</text>
+  <rect x="108.4" y="167" width="59.4" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="116.4" y="179" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Node.js</text>
+  <rect x="172.8" y="167" width="40.8" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="180.8" y="179" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">APIs</text>
+  <rect x="218.60000000000002" y="167" width="78.0" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="226.60000000000002" y="179" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">WebSockets</text>
+  <line x1="44" y1="192" x2="856" y2="192" stroke="#21262D" stroke-width="0.3"/>
+  <circle cx="32" cy="208" r="2.5" fill="#F78C6C" opacity="0.8"/>
+  <text x="44" y="212" fill="#F78C6C" font-family="'SF Mono',monospace" font-size="9.5" letter-spacing="1.5" font-weight="600">AI &amp; INTELLIGENCE</text>
+  <rect x="44" y="217" width="109.0" height="17" rx="3" fill="#F78C6C" opacity="0.07" stroke="#F78C6C" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="52" y="229" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">LLM Integration</text>
+  <rect x="158.0" y="217" width="78.0" height="17" rx="3" fill="#F78C6C" opacity="0.07" stroke="#F78C6C" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="166.0" y="229" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">AI Systems</text>
+  <rect x="241.0" y="217" width="78.0" height="17" rx="3" fill="#F78C6C" opacity="0.07" stroke="#F78C6C" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="249.0" y="229" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Automation</text>
+  <line x1="44" y1="242" x2="856" y2="242" stroke="#21262D" stroke-width="0.3"/>
+  <circle cx="32" cy="258" r="2.5" fill="#89DDFF" opacity="0.8"/>
+  <text x="44" y="262" fill="#89DDFF" font-family="'SF Mono',monospace" font-size="9.5" letter-spacing="1.5" font-weight="600">CLOUD &amp; DEVOPS</text>
+  <rect x="44" y="267" width="34.6" height="17" rx="3" fill="#89DDFF" opacity="0.07" stroke="#89DDFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="52" y="279" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Git</text>
+  <rect x="83.6" y="267" width="53.2" height="17" rx="3" fill="#89DDFF" opacity="0.07" stroke="#89DDFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="91.6" y="279" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">GitHub</text>
+  <rect x="141.8" y="267" width="53.2" height="17" rx="3" fill="#89DDFF" opacity="0.07" stroke="#89DDFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="149.8" y="279" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Docker</text>
+  <rect x="200.0" y="267" width="47.0" height="17" rx="3" fill="#89DDFF" opacity="0.07" stroke="#89DDFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="208.0" y="279" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Linux</text>
+  <rect x="252.0" y="267" width="47.0" height="17" rx="3" fill="#89DDFF" opacity="0.07" stroke="#89DDFF" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="260.0" y="279" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Cloud</text>
+  <line x1="44" y1="292" x2="856" y2="292" stroke="#21262D" stroke-width="0.3"/>
+  <circle cx="32" cy="308" r="2.5" fill="#FF5370" opacity="0.8"/>
+  <text x="44" y="312" fill="#FF5370" font-family="'SF Mono',monospace" font-size="9.5" letter-spacing="1.5" font-weight="600">SECURITY</text>
+  <rect x="44" y="317" width="96.60000000000001" height="17" rx="3" fill="#FF5370" opacity="0.07" stroke="#FF5370" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="52" y="329" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Cybersecurity</text>
+  <rect x="145.60000000000002" y="317" width="109.0" height="17" rx="3" fill="#FF5370" opacity="0.07" stroke="#FF5370" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="153.60000000000002" y="329" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Ethical Hacking</text>
+  <rect x="259.6" y="317" width="115.2" height="17" rx="3" fill="#FF5370" opacity="0.07" stroke="#FF5370" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="267.6" y="329" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Security Tooling</text>
+  <line x1="44" y1="342" x2="856" y2="342" stroke="#21262D" stroke-width="0.3"/>
+  <circle cx="32" cy="358" r="2.5" fill="#C792EA" opacity="0.8"/>
+  <text x="44" y="362" fill="#C792EA" font-family="'SF Mono',monospace" font-size="9.5" letter-spacing="1.5" font-weight="600">DESIGN</text>
+  <rect x="44" y="367" width="47.0" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="52" y="379" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Figma</text>
+  <rect x="96.0" y="367" width="115.2" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="104.0" y="379" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Interface Design</text>
+  <rect x="216.2" y="367" width="96.60000000000001" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
+  <text x="224.2" y="379" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Motion Design</text>
+</svg>

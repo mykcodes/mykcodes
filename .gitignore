@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment
+.env
+.venv/
+env/
+venv/
+
+# Preview (local QA tool, not needed in repo)
+README_PREVIEW.html
+
+# Temporary frame extractions from QA
+assets/generated/frame_*.png
+
+# Placeholder generator (development only)
+scripts/create_placeholders.py
+scripts/extract_frames.py

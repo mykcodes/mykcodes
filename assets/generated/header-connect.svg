@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="40" viewBox="0 0 880 40">
+  <text x="0" y="16" fill="#484F58" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="2">CONNECT</text>
+  <text x="63" y="16" fill="#484F58" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1" opacity="0.35">— reach out</text>
+  <line x1="0" y1="26" x2="880" y2="26" stroke="#21262D" stroke-width="0.4"/>
+</svg>

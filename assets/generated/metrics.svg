@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="100" viewBox="0 0 880 100">
+  <rect width="880" height="100" rx="8" fill="#161B22" stroke="#21262D" stroke-width="0.5"/>
+  
+  <!-- Header label -->
+  <text x="24" y="24" fill="#484F58" font-family="'SF Mono', monospace" font-size="9" letter-spacing="2">TELEMETRY.METRICS</text>
+  <line x1="24" y1="32" x2="856" y2="32" stroke="#21262D" stroke-width="0.5"/>
+  <text x="146" y="64" text-anchor="middle" fill="#E6EDF3" font-family="'Inter', 'Segoe UI', sans-serif" font-size="26" font-weight="600">—</text>
+  <text x="146" y="84" text-anchor="middle" fill="#8B949E" font-family="'SF Mono', monospace" font-size="9" letter-spacing="1">TOTAL CONTRIBUTIONS</text>
+  <circle cx="92.5" cy="80" r="2" fill="#64FFDA" opacity="0.7"/>
+  <line x1="293" y1="42" x2="293" y2="84" stroke="#21262D" stroke-width="0.5"/>
+  <text x="439" y="64" text-anchor="middle" fill="#E6EDF3" font-family="'Inter', 'Segoe UI', sans-serif" font-size="26" font-weight="600">—</text>
+  <text x="439" y="84" text-anchor="middle" fill="#8B949E" font-family="'SF Mono', monospace" font-size="9" letter-spacing="1">CURRENT STREAK</text>
+  <circle cx="398.0" cy="80" r="2" fill="#82AAFF" opacity="0.7"/>
+  <line x1="586" y1="42" x2="586" y2="84" stroke="#21262D" stroke-width="0.5"/>
+  <text x="732" y="64" text-anchor="middle" fill="#E6EDF3" font-family="'Inter', 'Segoe UI', sans-serif" font-size="26" font-weight="600">—</text>
+  <text x="732" y="84" text-anchor="middle" fill="#8B949E" font-family="'SF Mono', monospace" font-size="9" letter-spacing="1">LONGEST STREAK</text>
+  <circle cx="691.0" cy="80" r="2" fill="#C792EA" opacity="0.7"/>
+</svg>

@@ -1,0 +1,121 @@
+{
+  "identity": {
+    "name": "Mayank Sharma",
+    "username": "YOUR_GITHUB_USERNAME",
+    "headline": "CSE Student · Builder · UI-Minded Engineer",
+    "short_bio": "I build systems that work well and feel right. Interested in the space where engineering meets design — from AI orchestration to interface craft.",
+    "location": "India",
+    "design_principle": "Quiet execution. Thoughtful systems."
+  },
+  "status": {
+    "current": "Building",
+    "focus": "AI Systems · UI · Cloud · Security",
+    "currently_building": "ASTRA",
+    "currently_learning": "DSA · System Design · Cloud Architecture",
+    "open_to": "Interesting Collaboration"
+  },
+  "links": {
+    "github": "https://github.com/YOUR_GITHUB_USERNAME",
+    "portfolio": "https://YOUR_PORTFOLIO_URL",
+    "linkedin": "https://linkedin.com/in/YOUR_LINKEDIN",
+    "instagram": "https://instagram.com/YOUR_INSTAGRAM",
+    "facebook": "https://facebook.com/YOUR_FACEBOOK",
+    "email": "your.email@example.com"
+  },
+  "projects": [
+    {
+      "id": "astra",
+      "number": "01",
+      "category": "AI · SYSTEMS",
+      "name": "ASTRA",
+      "description": "A voice-first AI system with modular orchestration — memory, world state, permissions, recovery, and multi-provider intelligence.",
+      "technologies": ["Python", "FastAPI", "LLMs", "WebSockets"],
+      "status": "In Development",
+      "repo": "YOUR_GITHUB_USERNAME/astra",
+      "color_accent": "#64FFDA"
+    },
+    {
+      "id": "aerotwin",
+      "number": "02",
+      "category": "AI · AEROSPACE",
+      "name": "AeroTwin-X",
+      "description": "Real-time digital twin for aerospace engine health — anomaly detection, degradation tracking, and remaining useful life estimation.",
+      "technologies": ["Python", "AI/ML", "Telemetry", "Real-Time"],
+      "status": "In Development",
+      "repo": "YOUR_GITHUB_USERNAME/aerotwin-x",
+      "color_accent": "#82AAFF"
+    },
+    {
+      "id": "saraswati",
+      "number": "03",
+      "category": "PRODUCTIVITY · LEARNING",
+      "name": "SARASWATI",
+      "description": "A digital learning workspace — clean navigation through notes, subjects, and documents, designed for focused study.",
+      "technologies": ["Flutter", "Dart", "UI/UX"],
+      "status": "Active",
+      "repo": "YOUR_GITHUB_USERNAME/saraswati",
+      "color_accent": "#C792EA"
+    },
+    {
+      "id": "portfolio",
+      "number": "04",
+      "category": "DESIGN · WEB",
+      "name": "Portfolio",
+      "description": "Interface experiments and personal design exploration — a living collection of how I think about software experiences.",
+      "technologies": ["React", "TypeScript", "CSS", "Motion"],
+      "status": "Ongoing",
+      "repo": "YOUR_GITHUB_USERNAME/portfolio",
+      "color_accent": "#F78C6C"
+    }
+  ],
+  "tech_stack": {
+    "Languages": ["C++", "Python", "Java", "Dart", "JavaScript", "TypeScript"],
+    "Interface": ["Flutter", "React", "HTML", "CSS", "UI/UX Design"],
+    "Backend & Systems": ["FastAPI", "Node.js", "APIs", "WebSockets"],
+    "AI & Intelligence": ["LLM Integration", "AI Systems", "Automation"],
+    "Cloud & DevOps": ["Git", "GitHub", "Docker", "Linux", "Cloud"],
+    "Security": ["Cybersecurity", "Ethical Hacking", "Security Tooling"],
+    "Design": ["Figma", "Interface Design", "Motion Design"]
+  },
+  "design": {
+    "bg_primary": "#0D1117",
+    "bg_secondary": "#161B22",
+    "bg_card": "#1C2128",
+    "border": "#30363D",
+    "border_subtle": "#21262D",
+    "text_primary": "#E6EDF3",
+    "text_secondary": "#8B949E",
+    "text_muted": "#484F58",
+    "accent_cyan": "#64FFDA",
+    "accent_blue": "#82AAFF",
+    "accent_violet": "#C792EA",
+    "accent_ice": "#89DDFF",
+    "dot_red": "#FF5F56",
+    "dot_yellow": "#FFBD2E",
+    "dot_green": "#27C93F",
+    "content_width": 880,
+    "card_radius": 8,
+    "card_padding": 24
+  },
+  "animation": {
+    "portrait_width": 300,
+    "portrait_height": 300,
+    "particle_count": 2000,
+    "particle_radius_min": 1.0,
+    "particle_radius_max": 2.2,
+    "fps": 16,
+    "logo_hold_frames": 30,
+    "dispersion_frames": 20,
+    "portrait_formation_frames": 35,
+    "final_hold_frames": 40,
+    "background_color": "#0D1117",
+    "particle_color_primary": "#64FFDA",
+    "particle_color_secondary": "#82AAFF",
+    "particle_color_tertiary": "#C792EA",
+    "random_seed": 42,
+    "easing": "ease_in_out_cubic",
+    "movement_noise": 0.8,
+    "particle_opacity_min": 0.4,
+    "particle_opacity_max": 1.0
+  }
+}

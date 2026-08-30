@@ -1,0 +1,47 @@
+# ============================================================
+# Asset Generation Workflow
+# ============================================================
+# Regenerates all SVG assets when config or scripts change.
+# Useful for keeping generated assets in sync with the config.
+# ============================================================
+
+name: Generate Profile Assets
+
+on:
+  push:
+    paths:
+      - 'config/profile.json'
+      - 'scripts/**'
+      - 'assets/source/**'
+    branches:
+      - main
+  
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate assets
+        run: python scripts/build_profile.py
+
+      - name: Commit generated assets
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add assets/generated/ assets/projects/ README.md
+          git diff --quiet --cached || git commit -m "chore: regenerate profile assets"
+          git push
