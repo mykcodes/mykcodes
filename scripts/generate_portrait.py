@@ -1,13 +1,12 @@
 """
-Portrait Animation Generator — Optimized
-==========================================
-Generates a particle animation: Logo → Dispersion → Portrait
-Uses luminance-aware sampling, edge detection, and smooth easing.
-
-Optimizations:
-- Reduced frame count for smaller GIF
-- Color quantization for compression
-- Configurable quality/size tradeoff
+Portrait Animation Generator — Optimized for Phase 3
+====================================================
+Generates a highly-detailed particle animation: Logo → Dispersion → Portrait
+Features:
+- Image color sampling
+- Edge-aware density mapping
+- Multi-scale particles for pixel-art feel
+- Smooth transitions
 """
 
 import json
@@ -39,27 +38,49 @@ def hex_to_rgb(h):
     return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
 
 
-def load_gray(path, size):
-    if not path.exists():
-        return None
-    return np.array(Image.open(path).convert("L").resize(size, Image.LANCZOS), dtype=np.float64) / 255.0
+def get_density_map(img_gray, img_rgb):
+    # Edge detection
+    edges = np.array(img_gray.filter(ImageFilter.FIND_EDGES).filter(ImageFilter.GaussianBlur(1)), dtype=np.float64) / 255.0
+    gray_arr = np.array(img_gray, dtype=np.float64) / 255.0
+    
+    # Weight edges highly to preserve facial features, but keep luminance for fill
+    # Brighter pixels get more particles in luminance
+    combined = 0.3 * gray_arr + 0.7 * edges
+    return combined
 
 
-def edge_detect(gray):
-    img = Image.fromarray((gray * 255).astype(np.uint8), mode="L")
-    return np.array(img.filter(ImageFilter.FIND_EDGES).filter(ImageFilter.GaussianBlur(1)), dtype=np.float64) / 255.0
-
-
-def sample_bright(gray, edges, n, rng):
-    h, w = gray.shape
-    combined = 0.7 * gray + 0.3 * edges
-    flat = combined.flatten()
+def sample_points_and_colors(img_rgb, img_gray, n, rng):
+    w, h = img_rgb.size
+    density = get_density_map(img_gray, img_rgb)
+    flat = density.flatten()
     total = flat.sum()
+    
     if total == 0:
         indices = rng.choice(h * w, size=n, replace=True)
     else:
         indices = rng.choice(h * w, size=n, replace=True, p=flat / total)
-    return (indices % w).astype(np.float64), (indices // w).astype(np.float64)
+        
+    x = (indices % w).astype(np.float64)
+    y = (indices // w).astype(np.float64)
+    
+    # Extract colors
+    rgb_arr = np.array(img_rgb)
+    colors = rgb_arr[y.astype(int), x.astype(int), :]
+    
+    return x, y, colors
+
+
+def map_points(px, py, lx, ly):
+    # Sort both sets of points spatially to minimize intersecting paths during transition
+    px_sorted_idx = np.argsort(px + py * 0.1)
+    lx_sorted_idx = np.argsort(lx + ly * 0.1)
+    
+    lx_mapped = np.zeros_like(lx)
+    ly_mapped = np.zeros_like(ly)
+    lx_mapped[px_sorted_idx] = lx[lx_sorted_idx]
+    ly_mapped[px_sorted_idx] = ly[lx_sorted_idx]
+    
+    return lx_mapped, ly_mapped
 
 
 def generate_portrait_animation():
@@ -68,62 +89,69 @@ def generate_portrait_animation():
     
     W = anim["portrait_width"]
     H = anim["portrait_height"]
-    N = anim["particle_count"]
+    N = anim.get("particle_count", 8000)
     FPS = anim["fps"]
     BG = hex_to_rgb(anim["background_color"])
     SEED = anim["random_seed"]
     NOISE = anim["movement_noise"]
     
-    # Tighter frame budget for smaller GIF
-    GATHER = 18     # random → logo
-    LOGO_HOLD = 20  # hold logo
-    DISPERSE = 14   # logo → scatter  
-    FORM = 25       # scatter → portrait
-    FINAL = 25      # hold portrait
-    TOTAL = GATHER + LOGO_HOLD + DISPERSE + FORM + FINAL
+    APPEAR = anim.get("logo_appearance_frames", 15)
+    LOGO_HOLD = anim.get("logo_hold_frames", 30)
+    DISPERSE = anim.get("dispersion_frames", 25)
+    FORM = anim.get("portrait_formation_frames", 40)
+    FINAL = anim.get("final_hold_frames", 50)
+    TOTAL = APPEAR + LOGO_HOLD + DISPERSE + FORM + FINAL
     
     rng = np.random.default_rng(SEED)
     margin = 16
     rw, rh = W - 2 * margin, H - 2 * margin
     
-    # Colors
-    colors = [hex_to_rgb(anim[f"particle_color_{c}"]) for c in ("primary", "secondary", "tertiary")]
+    # Load and resize images
+    logo_img = Image.open(LOGO_SRC).convert("RGB").resize((rw, rh), Image.LANCZOS)
+    logo_gray = logo_img.convert("L")
     
-    # Load images
-    logo_g = load_gray(LOGO_SRC, (rw, rh))
-    port_g = load_gray(PORTRAIT_SRC, (rw, rh))
+    port_img = Image.open(PORTRAIT_SRC).convert("RGB").resize((rw, rh), Image.LANCZOS)
+    port_gray = port_img.convert("L")
     
-    # Sample points
-    if logo_g is not None:
-        lx, ly = sample_bright(logo_g, edge_detect(logo_g), N, rng)
-    else:
-        s = int(math.sqrt(N)) + 1
-        gx, gy = np.meshgrid(np.linspace(10, rw - 10, s), np.linspace(10, rh - 10, s))
-        lx, ly = gx.flatten()[:N], gy.flatten()[:N]
+    # Sample Portrait
+    px, py, p_colors = sample_points_and_colors(port_img, port_gray, N, rng)
     
-    if port_g is not None:
-        px, py = sample_bright(port_g, edge_detect(port_g), N, rng)
-    else:
-        angles = np.linspace(0, 2 * np.pi, N, endpoint=False)
-        radii = rng.uniform(20, min(rw, rh) / 2 - 10, N)
-        px, py = rw / 2 + radii * np.cos(angles), rh / 2 + radii * np.sin(angles)
+    # Sample Logo
+    lx, ly, l_colors_raw = sample_points_and_colors(logo_img, logo_gray, N, rng)
     
     # Add margin offset
     lx += margin; ly += margin
     px += margin; py += margin
     
-    # Initial random positions
-    start_x = rng.uniform(0, W, N)
-    start_y = rng.uniform(0, H, N)
+    # Map portrait points to logo points
+    lx, ly = map_points(px, py, lx, ly)
+    
+    # We want logo to be cyan/primary colored, or derived from logo
+    # But since it's a solid logo often, let's use the primary color from config
+    primary_color = hex_to_rgb(anim["particle_color_primary"])
+    l_colors = np.array([primary_color for _ in range(N)])
     
     # Disperse positions
-    disp_x = rng.uniform(0, W, N)
-    disp_y = rng.uniform(0, H, N)
+    disp_x = px + rng.uniform(-40, 40, N)
+    disp_y = py + rng.uniform(-40, 40, N)
     
-    # Particle properties
-    radii = rng.uniform(anim["particle_radius_min"], anim["particle_radius_max"], N)
+    # Multi-scale particles
+    # 70% micro, 20% small, 8% medium, 2% large
+    r_min = anim["particle_radius_min"]
+    r_max = anim["particle_radius_max"]
+    
+    radii = np.zeros(N)
+    micro_idx = int(N * 0.7)
+    small_idx = int(N * 0.9)
+    med_idx = int(N * 0.98)
+    
+    radii[:micro_idx] = rng.uniform(r_min, r_min + (r_max-r_min)*0.3, micro_idx)
+    radii[micro_idx:small_idx] = rng.uniform(r_min + (r_max-r_min)*0.3, r_min + (r_max-r_min)*0.6, small_idx - micro_idx)
+    radii[small_idx:med_idx] = rng.uniform(r_min + (r_max-r_min)*0.6, r_min + (r_max-r_min)*0.85, med_idx - small_idx)
+    radii[med_idx:] = rng.uniform(r_min + (r_max-r_min)*0.85, r_max, N - med_idx)
+    rng.shuffle(radii)
+    
     opacities = rng.uniform(anim["particle_opacity_min"], anim["particle_opacity_max"], N)
-    color_idx = np.arange(N) % len(colors)
     noise_ox = rng.uniform(0, 100, N)
     noise_oy = rng.uniform(0, 100, N)
     
@@ -134,54 +162,70 @@ def generate_portrait_animation():
         img = Image.new("RGB", (W, H), BG)
         draw = ImageDraw.Draw(img, "RGBA")
         
-        # Calculate positions for all particles at once
-        if fi < GATHER:
-            t = ease_in_out_cubic(fi / max(GATHER - 1, 1))
-            cur_x = start_x + (lx - start_x) * t
-            cur_y = start_y + (ly - start_y) * t
-        elif fi < GATHER + LOGO_HOLD:
-            cur_x = lx.copy()
-            cur_y = ly.copy()
-        elif fi < GATHER + LOGO_HOLD + DISPERSE:
-            t = ease_in_out_cubic((fi - GATHER - LOGO_HOLD) / max(DISPERSE - 1, 1))
+        if fi < APPEAR:
+            t = ease_in_out_cubic(fi / max(APPEAR - 1, 1))
+            cur_x = lx
+            cur_y = ly
+            cur_c = l_colors
+            alpha_mult = t
+        elif fi < APPEAR + LOGO_HOLD:
+            cur_x = lx
+            cur_y = ly
+            cur_c = l_colors
+            alpha_mult = 1.0
+        elif fi < APPEAR + LOGO_HOLD + DISPERSE:
+            t = ease_in_out_cubic((fi - APPEAR - LOGO_HOLD) / max(DISPERSE - 1, 1))
             cur_x = lx + (disp_x - lx) * t
             cur_y = ly + (disp_y - ly) * t
-        elif fi < GATHER + LOGO_HOLD + DISPERSE + FORM:
-            t = ease_in_out_cubic((fi - GATHER - LOGO_HOLD - DISPERSE) / max(FORM - 1, 1))
+            
+            # Transition color from logo to portrait
+            cur_c = l_colors + (p_colors - l_colors) * t
+            alpha_mult = 1.0
+        elif fi < APPEAR + LOGO_HOLD + DISPERSE + FORM:
+            t = ease_in_out_cubic((fi - APPEAR - LOGO_HOLD - DISPERSE) / max(FORM - 1, 1))
             cur_x = disp_x + (px - disp_x) * t
             cur_y = disp_y + (py - disp_y) * t
+            cur_c = p_colors
+            alpha_mult = 1.0
         else:
-            drift = (fi - GATHER - LOGO_HOLD - DISPERSE - FORM) / max(FINAL, 1)
-            cur_x = px + np.sin(drift * 4 + noise_ox) * NOISE
-            cur_y = py + np.cos(drift * 4 + noise_oy) * NOISE
+            drift = (fi - APPEAR - LOGO_HOLD - DISPERSE - FORM) / max(FINAL, 1)
+            # Only drift a subset of particles (the smaller ones) for subtle ambient motion
+            ambient_mask = radii < (r_min + (r_max-r_min)*0.4)
+            cur_x = px.copy()
+            cur_y = py.copy()
+            cur_x[ambient_mask] = px[ambient_mask] + np.sin(drift * 4 + noise_ox[ambient_mask]) * NOISE * 0.5
+            cur_y[ambient_mask] = py[ambient_mask] + np.cos(drift * 4 + noise_oy[ambient_mask]) * NOISE * 0.5
+            cur_c = p_colors
+            alpha_mult = 1.0
         
         # Add micro noise during transitions
-        if fi < GATHER + LOGO_HOLD + DISPERSE + FORM:
-            cur_x += np.sin(fi * 0.3 + noise_ox) * NOISE * 0.4
-            cur_y += np.cos(fi * 0.3 + noise_oy) * NOISE * 0.4
-        
-        # Fade-in for first few frames
-        fade = min(1.0, fi / 4.0)
-        
-        # Draw all particles
+        if APPEAR + LOGO_HOLD <= fi < APPEAR + LOGO_HOLD + DISPERSE + FORM:
+            t_noise = np.sin(fi * 0.5 + noise_ox) * NOISE
+            cur_x = cur_x + t_noise
+            cur_y = cur_y + np.cos(fi * 0.5 + noise_oy) * NOISE
+            
+        # Draw particles
         for i in range(N):
-            alpha = int(opacities[i] * fade * 255)
+            alpha = int(opacities[i] * alpha_mult * 255)
             alpha = max(0, min(255, alpha))
-            c = colors[color_idx[i]]
+            if alpha == 0:
+                continue
+                
             r = radii[i]
             x, y = cur_x[i], cur_y[i]
-            draw.ellipse([x - r, y - r, x + r, y + r], fill=(c[0], c[1], c[2], alpha))
+            c = cur_c[i]
+            draw.ellipse([x - r, y - r, x + r, y + r], fill=(int(c[0]), int(c[1]), int(c[2]), alpha))
         
         # Quantize for smaller GIF
-        img_q = img.quantize(colors=64, method=Image.Quantize.MEDIANCUT)
+        img_q = img.quantize(colors=128, method=Image.Quantize.MEDIANCUT)
         frames.append(img_q)
         
         # Timing
         if fi == TOTAL - 1:
             durations.append(2500)  # Hold final frame
-        elif fi >= GATHER + LOGO_HOLD + DISPERSE + FORM:
+        elif fi >= APPEAR + LOGO_HOLD + DISPERSE + FORM:
             durations.append(int(1000 / FPS * 1.3))
-        elif fi < GATHER + LOGO_HOLD and fi >= GATHER:
+        elif fi < APPEAR + LOGO_HOLD and fi >= APPEAR:
             durations.append(int(1000 / FPS * 1.15))
         else:
             durations.append(int(1000 / FPS))

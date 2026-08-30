@@ -100,14 +100,15 @@
   "animation": {
     "portrait_width": 300,
     "portrait_height": 300,
-    "particle_count": 2000,
-    "particle_radius_min": 1.0,
-    "particle_radius_max": 2.2,
+    "particle_count": 8000,
+    "particle_radius_min": 0.4,
+    "particle_radius_max": 1.5,
     "fps": 16,
+    "logo_appearance_frames": 15,
     "logo_hold_frames": 30,
-    "dispersion_frames": 20,
-    "portrait_formation_frames": 35,
-    "final_hold_frames": 40,
+    "dispersion_frames": 25,
+    "portrait_formation_frames": 40,
+    "final_hold_frames": 50,
     "background_color": "#0D1117",
     "particle_color_primary": "#64FFDA",
     "particle_color_secondary": "#82AAFF",
@@ -115,7 +116,7 @@
     "random_seed": 42,
     "easing": "ease_in_out_cubic",
     "movement_noise": 0.8,
-    "particle_opacity_min": 0.4,
+    "particle_opacity_min": 0.7,
     "particle_opacity_max": 1.0
   }
 }
