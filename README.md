@@ -24,8 +24,8 @@
 
 <br/><br/>
 
-<a href="https://github.com/mykcodes">
-  <img src="assets/generated/github-telemetry.svg" alt="GitHub contribution telemetry" width="880"/>
+<a href="https://github.com/YOUR_GITHUB_USERNAME">
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=YOUR_GITHUB_USERNAME&theme=transparent&hide_border=true&date_format=j%20M%5B%20Y%5D&ring=64FFDA&fire=64FFDA&currStreakLabel=64FFDA&sideLabels=8B949E&currStreakNum=E6EDF3&sideNums=E6EDF3&dates=484F58&stroke=21262D&background=161B22" alt="GitHub contribution streak" width="880"/>
 </a>
 
 <br/>
@@ -41,13 +41,13 @@
 <table>
 <tr>
 <td width="50%" align="center">
-  <a href="https://github.com/mykcodes">
-    <img src="assets/generated/github-stats.svg" alt="GitHub Stats" width="432"/>
+  <a href="https://github.com/YOUR_GITHUB_USERNAME">
+    <img src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&hide_border=true&bg_color=161B22&title_color=64FFDA&text_color=8B949E&icon_color=82AAFF&include_all_commits=true&count_private=true" alt="GitHub Stats" width="430"/>
   </a>
 </td>
 <td width="50%" align="center">
-  <a href="https://github.com/mykcodes">
-    <img src="assets/generated/github-languages.svg" alt="Most Used Languages" width="432"/>
+  <a href="https://github.com/YOUR_GITHUB_USERNAME">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&hide_border=true&bg_color=161B22&title_color=64FFDA&text_color=8B949E&langs_count=8" alt="Most Used Languages" width="430"/>
   </a>
 </td>
 </tr>
@@ -76,9 +76,9 @@
 <br/><br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/generated/github-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="assets/generated/github-snake.svg"/>
-  <img alt="GitHub contribution graph — snake animation" src="assets/generated/github-snake-dark.svg" width="880"/>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME/output/github-snake-dark.svg"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME/output/github-snake.svg"/>
+  <img alt="GitHub contribution graph — snake animation" src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME/output/github-snake-dark.svg" width="880"/>
 </picture>
 
 <br/><br/>
@@ -94,24 +94,24 @@
 <table>
 <tr>
 <td width="50%" align="center">
-  <a href="https://github.com/mykcodes/astra">
+  <a href="https://github.com/YOUR_GITHUB_USERNAME/astra">
     <img src="assets/projects/astra.svg" alt="ASTRA — Voice-first AI system with modular orchestration" width="432"/>
   </a>
 </td>
 <td width="50%" align="center">
-  <a href="https://github.com/mykcodes/aerotwin-x-x-x-x">
+  <a href="https://github.com/YOUR_GITHUB_USERNAME/aerotwin-x-x">
     <img src="assets/projects/aerotwin.svg" alt="AeroTwin-X — Real-time digital twin for aerospace engine health" width="432"/>
   </a>
 </td>
 </tr>
 <tr>
 <td width="50%" align="center">
-  <a href="https://github.com/mykcodes/saraswati">
+  <a href="https://github.com/YOUR_GITHUB_USERNAME/saraswati">
     <img src="assets/projects/saraswati.svg" alt="SARASWATI — Digital learning workspace" width="432"/>
   </a>
 </td>
 <td width="50%" align="center">
-  <a href="https://github.com/mykcodes/portfolio">
+  <a href="https://github.com/YOUR_GITHUB_USERNAME/portfolio">
     <img src="assets/projects/portfolio.svg" alt="Portfolio — Interface experiments and design exploration" width="432"/>
   </a>
 </td>
