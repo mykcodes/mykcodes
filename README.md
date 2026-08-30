@@ -4,25 +4,19 @@
 <img src="assets/generated/header-telemetry.svg" alt="GitHub Telemetry — real-time metrics" width="880"/>
 <br/>
 <a href="https://github.com/mykcodes">
-  <img src="https://streak-stats.demolab.com?user=mykcodes&theme=black-ice&hide_border=true&border_radius=10&card_width=880&card_height=220" alt="GitHub contribution streak" width="880" height="220"/>
+  <img src="https://streak-stats.demolab.com?user=mykcodes&theme=black-ice&hide_border=false&border_radius=10&card_width=880&card_height=220" alt="GitHub contribution streak" width="880" height="220"/>
 </a>
 <br/>
 <img src="assets/generated/header-stats.svg" alt="GitHub Statistics — performance overview" width="880"/>
 <br/>
-<table>
-<tr>
-<td width="50%" align="center">
-  <a href="https://github.com/mykcodes">
-    <img src="https://github-readme-stats-fast.vercel.app/api?username=mykcodes&show_icons=true&theme=dark" alt="GitHub Stats" width="430"/>
+<sub>
+  <a href="https://github.com/mykcodes" align="middle">
+    <img src="https://github-readme-stats-fast.vercel.app/api?username=mykcodes&show_icons=true&theme=dark" alt="GitHub Stats" width="480"/>
+  </a> &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/mykcodes" align="middle">
+    <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=pranesh-2005&layout=compact&theme=dark" alt="Most Used Languages" height="202" width="380"/>
   </a>
-</td>
-<td width="50%" align="center">
-  <a href="https://github.com/mykcodes">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mykcodes&layout=compact&hide_border=true&bg_color=161B22&title_color=64FFDA&text_color=8B949E&langs_count=8" alt="Most Used Languages" width="430"/>
-  </a>
-</td>
-</tr>
-</table>
+</sub>
 <br/>
 <img src="assets/generated/header-toolkit.svg" alt="Toolkit Map — active technologies" width="880"/>
 <br/>
@@ -36,7 +30,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake.svg"/>
-  <img alt="GitHub contribution graph — snake animation" src="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg" width="880"/>
+  <img src="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg" alt="GitHub contribution graph — snake animation" width="880"/>
 </picture>
 
 <br/> 
