@@ -11,10 +11,10 @@
 <br/>
 <sub>
   <a href="https://github.com/mykcodes" align="middle">
-    <img src="https://github-readme-stats-fast.vercel.app/api?username=mykcodes&show_icons=true&theme=dark" alt="GitHub Stats" width="480"/>
+    <img src="https://github-readme-stats-fast.vercel.app/api?username=mykcodes&show_icons=true&theme=dark&card_width=600&line_height=25&bg_color=151B23&hide_border=true" alt="GitHub Stats" height="170" width="350"/>
   </a> &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/mykcodes" align="middle">
-    <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=pranesh-2005&layout=compact&theme=dark" alt="Most Used Languages" height="202" width="380"/>
+  <a href="https://github.com/mykcodes">
+    <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=mykcodes&layout=compact&theme=dark&card_width=440&bg_color=151B23&hide_border=true" alt="Most Used Languages" height="170" width="350"/>
   </a>
 </sub>
 <br/>
