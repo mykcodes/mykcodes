@@ -4,7 +4,7 @@
 <img src="assets/generated/header-telemetry.svg" alt="GitHub Telemetry — real-time metrics" width="880"/>
 <br/>
 <a href="https://github.com/mykcodes">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=mykcodes&theme=transparent&hide_border=true&date_format=j%20M%5B%20Y%5D&ring=64FFDA&fire=64FFDA&currStreakLabel=64FFDA&sideLabels=8B949E&currStreakNum=E6EDF3&sideNums=E6EDF3&dates=484F58&stroke=21262D&background=161B22" alt="GitHub contribution streak" width="880"/>
+  <img src="https://github-readme-stats-fast.vercel.app/api/streak?username=mykcodes&theme=dark" alt="GitHub contribution streak" width="880" height="220"/>
 </a>
 <br/>
 <img src="assets/generated/header-stats.svg" alt="GitHub Statistics — performance overview" width="880"/>
@@ -13,7 +13,7 @@
 <tr>
 <td width="50%" align="center">
   <a href="https://github.com/mykcodes">
-    <img src="https://github-readme-stats.vercel.app/api?username=mykcodes&show_icons=true&hide_border=true&bg_color=161B22&title_color=64FFDA&text_color=8B949E&icon_color=82AAFF&include_all_commits=true&count_private=true" alt="GitHub Stats" width="430"/>
+    <img src="https://github-readme-stats-fast.vercel.app/api?username=mykcodes&show_icons=true&theme=dark" alt="GitHub Stats" width="430"/>
   </a>
 </td>
 <td width="50%" align="center">
