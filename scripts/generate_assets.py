@@ -328,7 +328,7 @@ def generate_project_cards(config):
   
   <rect width="{card_w}" height="{card_h}" rx="{r}" fill="url(#cg-{pid})" stroke="{d['border']}" stroke-width="0.5"/>
   <rect width="{card_w}" height="{card_h}" rx="{r}" fill="url(#grid-{pid})"/>
-  <rect x="0" y="0" width="{card_w}" height="1.5" rx="{r}" fill="url(#ca-{pid})"/>
+  <rect x="0" y="0" width="{card_w}" height="1.5" rx="{r}" fill="{d['border']}" opacity="0.4"/>
   
   {visual}
   
@@ -383,40 +383,97 @@ def generate_project_cards(config):
 
 
 # ===========================================================================
-# CONNECT BUTTONS SVG
+# CONNECT BUTTONS SVG — Premium dark-theme controls with icons
 # ===========================================================================
 def generate_buttons(config):
     d = config["design"]
+    cyan = d['accent_cyan']
+    bg = d['bg_secondary']
+    bg_card = d['bg_card']
+    border = d['border']
+    border_s = d['border_subtle']
+    t1 = d['text_primary']
+    t2 = d['text_secondary']
+    t3 = d['text_muted']
     
-    # Portfolio CTA
-    pw, ph = 320, 60
+    # ─── Portfolio CTA (full-width premium panel) ───
+    pw, ph = 880, 72
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{pw}" height="{ph}" viewBox="0 0 {pw} {ph}">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="{pw}" y2="{ph}">
-      <stop offset="0%" stop-color="{d['bg_secondary']}"/>
-      <stop offset="100%" stop-color="{d['bg_card']}"/>
+    <linearGradient id="cta-bg" x1="0" y1="0" x2="{pw}" y2="{ph}">
+      <stop offset="0%" stop-color="{bg}"/>
+      <stop offset="100%" stop-color="{bg_card}"/>
+    </linearGradient>
+    <linearGradient id="cta-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="{cyan}" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="{d['accent_blue']}" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="{cyan}" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <rect width="{pw}" height="{ph}" rx="8" fill="url(#bg)" stroke="{d['accent_cyan']}" stroke-width="0.8" stroke-opacity="0.5"/>
-  <rect x="0" y="0" width="{pw}" height="2" rx="8" fill="{d['accent_cyan']}" opacity="0.8"/>
-  <text x="{pw//2}" y="28" text-anchor="middle" fill="{d['accent_cyan']}" font-family="'SF Mono',monospace" font-size="12" letter-spacing="2" font-weight="600">◆  OPEN PORTFOLIO</text>
-  <text x="{pw//2}" y="46" text-anchor="middle" fill="{d['text_secondary']}" font-family="'Inter','Segoe UI',sans-serif" font-size="10" opacity="0.8">Interface · Work · Experiments  →</text>
+  <rect width="{pw}" height="{ph}" rx="8" fill="url(#cta-bg)" stroke="{cyan}" stroke-width="0.6" stroke-opacity="0.35"/>
+  <rect x="0" y="0" width="{pw}" height="1.5" rx="8" fill="url(#cta-accent)"/>
+  <g opacity="0.015">
+    {chr(10).join(f"<line x1='{x}' y1='0' x2='{x}' y2='{ph}' stroke='{t2}' stroke-width='0.5'/>" for x in range(0, pw, 32))}
+  </g>
+  <text x="32" y="30" fill="{cyan}" font-family="'SF Mono',monospace" font-size="13" font-weight="600" letter-spacing="2">◇  OPEN PORTFOLIO</text>
+  <text x="32" y="52" fill="{t2}" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.7">Work · Interfaces · Experiments</text>
+  <text x="{pw - 32}" y="42" text-anchor="end" fill="{cyan}" font-family="'SF Mono',monospace" font-size="16" opacity="0.6">→</text>
+  <circle cx="{pw - 60}" cy="38" r="3" fill="#27C93F" opacity="0.5"/>
+  <text x="{pw - 72}" y="42" text-anchor="end" fill="{t3}" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1" opacity="0.4">LIVE</text>
 </svg>'''
     (GEN_DIR / "btn-portfolio.svg").write_text(svg, encoding="utf-8")
     
-    # Social Buttons
-    socials = ["linkedin", "instagram", "facebook", "email"]
-    sw, sh = 140, 40
+    # ─── Social Buttons (with inline SVG icons) ───
+    icon_paths = {
+        "linkedin": "M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v12h-4V8zm7.09.01C7.85 8.01 8.07 8 8.5 8h3.5v1.75h.05c.5-.95 1.72-1.95 3.54-1.95 3.78 0 4.48 2.49 4.48 5.73V20h-4v-5.66c0-1.35-.02-3.09-1.88-3.09-1.88 0-2.17 1.47-2.17 2.99V20h-4V8.01z",
+        "instagram": "M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3zm5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-2.5a1 1 0 100 2 1 1 0 000-2z",
+        "facebook": "M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15h-2v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.95c5.05-.5 9-4.76 9-9.95z",
+        "email": "M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6L12 12 4 6zm0 2.5V18h16V8.5l-8 5.5-8-5.5z"
+    }
     
-    for social in socials:
+    labels = {
+        "linkedin": "LINKEDIN",
+        "instagram": "INSTAGRAM",
+        "facebook": "FACEBOOK",
+        "email": "EMAIL"
+    }
+    
+    sw, sh = 180, 44
+    
+    for social in ["linkedin", "instagram", "facebook", "email"]:
+        icon = icon_paths.get(social, "")
+        label = labels[social]
+        
         svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{sw}" height="{sh}" viewBox="0 0 {sw} {sh}">
-  <rect width="{sw}" height="{sh}" rx="6" fill="{d['bg_secondary']}" stroke="{d['border_subtle']}" stroke-width="0.5"/>
-  <rect x="0" y="{sh-1}" width="{sw}" height="1" fill="{d['text_muted']}" opacity="0.2"/>
-  <text x="{sw//2}" y="{sh//2 + 4}" text-anchor="middle" fill="{d['text_secondary']}" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1">{esc(social.upper())}</text>
+  <rect width="{sw}" height="{sh}" rx="6" fill="{bg}" stroke="{border_s}" stroke-width="0.5"/>
+  <rect x="0" y="{sh - 1}" width="{sw}" height="1" rx="0" fill="{t3}" opacity="0.15"/>
+  <g transform="translate(14, {sh // 2 - 8}) scale(0.66)" fill="{t2}" opacity="0.7">
+    <path d="{icon}"/>
+  </g>
+  <text x="38" y="{sh // 2 + 4}" fill="{t2}" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1.2">{label}</text>
+  <text x="{sw - 14}" y="{sh // 2 + 3}" text-anchor="end" fill="{t3}" font-family="'SF Mono',monospace" font-size="10" opacity="0.4">→</text>
 </svg>'''
         (GEN_DIR / f"btn-{social}.svg").write_text(svg, encoding="utf-8")
     
+    # ─── Profile Views Counter SVG wrapper ───
+    generate_profile_views(config)
+    
     print("[OK] Connect buttons generated.")
+
+
+def generate_profile_views(config):
+    d = config["design"]
+    username = config["identity"]["username"]
+    
+    vw, vh = 280, 36
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{vw}" height="{vh}" viewBox="0 0 {vw} {vh}">
+  <rect width="{vw}" height="{vh}" rx="4" fill="{d['bg_secondary']}" stroke="{d['border_subtle']}" stroke-width="0.4"/>
+  <circle cx="14" cy="{vh // 2}" r="3" fill="#27C93F" opacity="0.5"/>
+  <text x="24" y="{vh // 2 + 4}" fill="{d['text_muted']}" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1">PROFILE.VIEWS</text>
+  <image href="https://komarev.com/ghpvc/?username={username}&amp;style=flat-square&amp;color=161B22&amp;label=" x="128" y="6" width="140" height="24"/>
+</svg>'''
+    (GEN_DIR / "profile-views.svg").write_text(svg, encoding="utf-8")
+    print(f"[OK] Profile views SVG: assets/generated/profile-views.svg")
 
 
 # ===========================================================================

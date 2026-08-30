@@ -1,0 +1,260 @@
+{
+  "username": "mykcodes",
+  "generated_at": "2026-08-30T19:20:45.204992Z",
+  "total_contributions": 476,
+  "current_streak": 12,
+  "longest_streak": 45,
+  "repositories": 34,
+  "stars": 128,
+  "forks": 18,
+  "followers": 89,
+  "pull_requests": 56,
+  "issues": 24,
+  "weekly_activity": [
+    {
+      "week_start": "2025-01-01",
+      "contributions": 12
+    },
+    {
+      "week_start": "2025-01-08",
+      "contributions": 13
+    },
+    {
+      "week_start": "2025-01-15",
+      "contributions": 13
+    },
+    {
+      "week_start": "2025-01-22",
+      "contributions": 14
+    },
+    {
+      "week_start": "2025-02-01",
+      "contributions": 14
+    },
+    {
+      "week_start": "2025-02-08",
+      "contributions": 15
+    },
+    {
+      "week_start": "2025-02-15",
+      "contributions": 15
+    },
+    {
+      "week_start": "2025-02-22",
+      "contributions": 11
+    },
+    {
+      "week_start": "2025-03-01",
+      "contributions": 11
+    },
+    {
+      "week_start": "2025-03-08",
+      "contributions": 11
+    },
+    {
+      "week_start": "2025-03-15",
+      "contributions": 11
+    },
+    {
+      "week_start": "2025-03-22",
+      "contributions": 12
+    },
+    {
+      "week_start": "2025-04-01",
+      "contributions": 12
+    },
+    {
+      "week_start": "2025-04-08",
+      "contributions": 13
+    },
+    {
+      "week_start": "2025-04-15",
+      "contributions": 10
+    },
+    {
+      "week_start": "2025-04-22",
+      "contributions": 11
+    },
+    {
+      "week_start": "2025-05-01",
+      "contributions": 12
+    },
+    {
+      "week_start": "2025-05-08",
+      "contributions": 13
+    },
+    {
+      "week_start": "2025-05-15",
+      "contributions": 14
+    },
+    {
+      "week_start": "2025-05-22",
+      "contributions": 15
+    },
+    {
+      "week_start": "2025-06-01",
+      "contributions": 16
+    },
+    {
+      "week_start": "2025-06-08",
+      "contributions": 13
+    },
+    {
+      "week_start": "2025-06-15",
+      "contributions": 14
+    },
+    {
+      "week_start": "2025-06-22",
+      "contributions": 14
+    },
+    {
+      "week_start": "2025-07-01",
+      "contributions": 14
+    },
+    {
+      "week_start": "2025-07-08",
+      "contributions": 14
+    },
+    {
+      "week_start": "2025-07-15",
+      "contributions": 14
+    },
+    {
+      "week_start": "2025-07-22",
+      "contributions": 13
+    },
+    {
+      "week_start": "2025-08-01",
+      "contributions": 9
+    },
+    {
+      "week_start": "2025-08-08",
+      "contributions": 8
+    },
+    {
+      "week_start": "2025-08-15",
+      "contributions": 7
+    },
+    {
+      "week_start": "2025-08-22",
+      "contributions": 6
+    },
+    {
+      "week_start": "2025-09-01",
+      "contributions": 5
+    },
+    {
+      "week_start": "2025-09-08",
+      "contributions": 4
+    },
+    {
+      "week_start": "2025-09-15",
+      "contributions": 3
+    },
+    {
+      "week_start": "2025-09-22",
+      "contributions": 0
+    },
+    {
+      "week_start": "2025-10-01",
+      "contributions": 0
+    },
+    {
+      "week_start": "2025-10-08",
+      "contributions": 0
+    },
+    {
+      "week_start": "2025-10-15",
+      "contributions": 0
+    },
+    {
+      "week_start": "2025-10-22",
+      "contributions": 0
+    },
+    {
+      "week_start": "2025-11-01",
+      "contributions": 1
+    },
+    {
+      "week_start": "2025-11-08",
+      "contributions": 2
+    },
+    {
+      "week_start": "2025-11-15",
+      "contributions": 0
+    },
+    {
+      "week_start": "2025-11-22",
+      "contributions": 2
+    },
+    {
+      "week_start": "2025-12-01",
+      "contributions": 3
+    },
+    {
+      "week_start": "2025-12-08",
+      "contributions": 5
+    },
+    {
+      "week_start": "2025-12-15",
+      "contributions": 7
+    },
+    {
+      "week_start": "2025-12-22",
+      "contributions": 9
+    },
+    {
+      "week_start": "2025-01-01",
+      "contributions": 11
+    },
+    {
+      "week_start": "2025-01-08",
+      "contributions": 9
+    },
+    {
+      "week_start": "2025-01-15",
+      "contributions": 10
+    },
+    {
+      "week_start": "2025-01-22",
+      "contributions": 11
+    }
+  ],
+  "languages": [
+    {
+      "name": "Python",
+      "color": "#3572A5",
+      "percent": 42.1
+    },
+    {
+      "name": "TypeScript",
+      "color": "#3178C6",
+      "percent": 22.8
+    },
+    {
+      "name": "C++",
+      "color": "#f34b7d",
+      "percent": 14.5
+    },
+    {
+      "name": "Dart",
+      "color": "#00B4AB",
+      "percent": 9.2
+    },
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a",
+      "percent": 6.1
+    },
+    {
+      "name": "HTML",
+      "color": "#e34c26",
+      "percent": 3.4
+    },
+    {
+      "name": "CSS",
+      "color": "#563d7c",
+      "percent": 1.9
+    }
+  ]
+}

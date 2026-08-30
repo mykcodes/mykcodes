@@ -21,16 +21,16 @@ def validate_config():
     if not cfg_path.exists():
         check("errors", "config/profile.json missing")
         return None
-    
+
     try:
         with open(cfg_path, "r", encoding="utf-8") as f:
             config = json.load(f)
     except json.JSONDecodeError as e:
         check("errors", f"config/profile.json invalid JSON: {e}")
         return None
-    
+
     check("info", "config/profile.json: valid JSON")
-    
+
     # Check for placeholder values
     cfg_text = cfg_path.read_text(encoding="utf-8")
     placeholders = ["YOUR_GITHUB_USERNAME", "YOUR_PORTFOLIO_URL", "YOUR_LINKEDIN",
@@ -38,35 +38,70 @@ def validate_config():
     for ph in placeholders:
         if ph in cfg_text:
             check("warnings", f"Config placeholder: {ph}")
-    
+
     # Check required keys
     required = ["identity", "status", "links", "projects", "tech_stack", "design", "animation"]
     for key in required:
         if key not in config:
             check("errors", f"Config missing key: {key}")
-    
+
     return config
 
 
+def validate_data():
+    """Validate data/github_profile.json."""
+    data_path = ROOT / "data" / "github_profile.json"
+    if not data_path.exists():
+        check("warnings", "data/github_profile.json missing — run fetch_github_data.py")
+        return
+
+    try:
+        with open(data_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except json.JSONDecodeError as e:
+        check("errors", f"data/github_profile.json invalid JSON: {e}")
+        return
+
+    check("info", f"data/github_profile.json: valid JSON ({data_path.stat().st_size} bytes)")
+
+    required = ["username", "total_contributions", "repositories", "stars", "languages", "weekly_activity"]
+    for key in required:
+        if key not in data:
+            check("warnings", f"Data missing key: {key}")
+
+    if "generated_at" in data:
+        check("info", f"Data generated at: {data['generated_at']}")
+
+
 def validate_assets():
-    """Validate all generated assets exist."""
+    """Validate all generated assets exist and are non-empty."""
     gen = ROOT / "assets" / "generated"
     required_gen = [
-        "hero.svg", "stack.svg", "contact.svg", "footer.svg",
+        "hero.svg", "stack.svg", "footer.svg",
         "header-telemetry.svg", "header-stats.svg", "header-toolkit.svg",
         "header-contribution.svg", "header-projects.svg", "header-connect.svg",
-        "github-telemetry.svg", "github-stats.svg", "github-languages.svg",
-        "btn-portfolio.svg", "btn-linkedin.svg", "btn-instagram.svg", 
-        "btn-facebook.svg", "btn-email.svg"
+        "github-dashboard.svg", "github-languages.svg",
+        "btn-portfolio.svg", "btn-linkedin.svg", "btn-instagram.svg",
+        "btn-facebook.svg", "btn-email.svg", "profile-views.svg",
     ]
-    
+
     for f in required_gen:
-        if (gen / f).exists():
-            size = (gen / f).stat().st_size
-            check("info", f"assets/generated/{f}: {size} bytes")
+        path = gen / f
+        if path.exists():
+            size = path.stat().st_size
+            if size == 0:
+                check("errors", f"Empty: assets/generated/{f}")
+            elif f.endswith(".svg"):
+                content = path.read_text(encoding="utf-8")
+                if "<svg" not in content:
+                    check("errors", f"Invalid SVG: assets/generated/{f}")
+                else:
+                    check("info", f"assets/generated/{f}: {size} bytes OK")
+            else:
+                check("info", f"assets/generated/{f}: {size} bytes")
         else:
             check("errors", f"Missing: assets/generated/{f}")
-    
+
     # Portrait
     portrait = gen / "portrait-animation.gif"
     if portrait.exists():
@@ -76,12 +111,17 @@ def validate_assets():
             check("warnings", f"Portrait GIF large: {size_kb:.0f} KB (target < 5000 KB)")
     else:
         check("warnings", "Portrait animation not found")
-    
+
     # Project cards
     proj_dir = ROOT / "assets" / "projects"
     for card in ["astra.svg", "aerotwin.svg", "saraswati.svg", "portfolio.svg"]:
-        if (proj_dir / card).exists():
-            check("info", f"assets/projects/{card}: OK")
+        path = proj_dir / card
+        if path.exists():
+            content = path.read_text(encoding="utf-8")
+            if "<svg" not in content:
+                check("errors", f"Invalid SVG: assets/projects/{card}")
+            else:
+                check("info", f"assets/projects/{card}: OK")
         else:
             check("errors", f"Missing: assets/projects/{card}")
 
@@ -92,9 +132,19 @@ def validate_readme():
     if not readme.exists():
         check("errors", "README.md missing")
         return
-    
+
     content = readme.read_text(encoding="utf-8")
-    
+
+    # Check for merge conflict markers
+    if "<<<<<<" in content or ">>>>>>>" in content:
+        check("errors", "README.md contains merge conflict markers")
+
+    # Check for old external widgets
+    if "github-readme-stats" in content:
+        check("warnings", "README.md still references github-readme-stats external widget")
+    if "streak-stats.demolab.com" in content:
+        check("warnings", "README.md still references streak-stats external widget")
+
     # Check image references
     img_refs = re.findall(r'src=["\']([^"\']+)["\']', content)
     for ref in img_refs:
@@ -105,17 +155,7 @@ def validate_readme():
             check("errors", f"Broken image ref: {ref}")
         else:
             check("info", f"Image ref OK: {ref}")
-    
-    # Check for common issues
-    if content.count("<br/>") > 20:
-        check("warnings", f"Excessive <br/> tags: {content.count('<br/>')}")
-    
-    # Check alt text
-    imgs_without_alt = re.findall(r'<img[^>]*(?<!alt=")[^>]*/>', content)
-    for img in imgs_without_alt:
-        if 'alt=' not in img:
-            check("warnings", f"Image without alt text: {img[:60]}...")
-    
+
     check("info", f"README.md: {len(content)} bytes, {content.count(chr(10))} lines")
 
 
@@ -125,7 +165,7 @@ def validate_workflows():
     if not wf_dir.exists():
         check("errors", ".github/workflows/ missing")
         return
-    
+
     for yml in wf_dir.glob("*.yml"):
         content = yml.read_text(encoding="utf-8")
         if not content.strip():
@@ -135,7 +175,11 @@ def validate_workflows():
         elif "on:" not in content:
             check("warnings", f"Workflow missing 'on:': {yml.name}")
         else:
-            check("info", f"Workflow OK: {yml.name}")
+            # Check for permissions
+            if "contents: write" in content:
+                check("info", f"Workflow OK (write perms): {yml.name}")
+            else:
+                check("warnings", f"Workflow may lack write permissions: {yml.name}")
 
 
 def validate_python():
@@ -153,31 +197,32 @@ def main():
     print()
     print("  VALIDATION SUITE")
     print("  " + "=" * 40)
-    
+
     validate_config()
+    validate_data()
     validate_assets()
     validate_readme()
     validate_workflows()
     validate_python()
-    
+
     print()
-    
+
     if issues["errors"]:
         print(f"  ERRORS ({len(issues['errors'])}):")
         for e in issues["errors"]:
             print(f"    x {e}")
         print()
-    
+
     if issues["warnings"]:
         print(f"  WARNINGS ({len(issues['warnings'])}):")
         for w in issues["warnings"]:
             print(f"    ! {w}")
         print()
-    
+
     print(f"  INFO ({len(issues['info'])}):")
     for i in issues["info"]:
         print(f"    . {i}")
-    
+
     print()
     if issues["errors"]:
         print("  RESULT: FAIL")

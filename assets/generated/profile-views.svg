@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="36" viewBox="0 0 280 36">
+  <rect width="280" height="36" rx="4" fill="#161B22" stroke="#21262D" stroke-width="0.4"/>
+  <circle cx="14" cy="18" r="3" fill="#27C93F" opacity="0.5"/>
+  <text x="24" y="22" fill="#484F58" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1">PROFILE.VIEWS</text>
+  <image href="https://komarev.com/ghpvc/?username=mykcodes&amp;style=flat-square&amp;color=161B22&amp;label=" x="128" y="6" width="140" height="24"/>
+</svg>

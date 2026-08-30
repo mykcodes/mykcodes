@@ -1,24 +1,13 @@
 <div align="center">
 <img src="assets/generated/hero.svg" alt="Mayank Sharma — CSE Student, Builder, UI-Minded Engineer" width="880"/>
 <br/>
-<img src="assets/generated/header-telemetry.svg" alt="GitHub Telemetry — real-time metrics" width="880"/>
-<br/>
-<a href="https://github.com/mykcodes">
-  <img src="https://streak-stats.demolab.com?user=mykcodes&theme=black-ice&hide_border=false&border_radius=10&card_width=880&card_height=220" alt="GitHub contribution streak" width="880" height="220"/>
-</a>
-<br/>
 <img src="assets/generated/header-stats.svg" alt="GitHub Statistics — performance overview" width="880"/>
 <br/>
-<sub>
-  <a href="https://github.com/mykcodes" align="middle">
-    <img src="https://github-readme-stats-fast.vercel.app/api?username=mykcodes&show_icons=true&theme=dark&card_width=600&line_height=25&bg_color=151B23&hide_border=true" alt="GitHub Stats" height="170" width="350"/>
-  </a> &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/mykcodes">
-    <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=mykcodes&layout=compact&theme=dark&card_width=440&bg_color=151B23&hide_border=true" alt="Most Used Languages" height="170" width="350"/>
-  </a>
-</sub>
+<img src="assets/generated/github-dashboard.svg" alt="GitHub Activity Dashboard — contributions, repos, stars, activity graph" width="880"/>
 <br/>
 <img src="assets/generated/header-toolkit.svg" alt="Toolkit Map — active technologies" width="880"/>
+<br/>
+<img src="assets/generated/github-languages.svg" alt="Language Distribution — code signal" width="880"/>
 <br/>
 <img src="assets/generated/stack.svg" alt="Technology stack: Languages, Interface, Backend, AI, Cloud, Security, Design" width="880"/>
 <br/>
@@ -28,15 +17,9 @@
 <br/>
 
 <picture>
-<<<<<<< HEAD
   <source media="(prefers-color-scheme: dark)" srcset="assets/generated/github-snake-dark.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="assets/generated/github-snake.svg"/>
   <img alt="GitHub contribution graph — snake animation" src="assets/generated/github-snake-dark.svg" width="880"/>
-=======
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake.svg"/>
-  <img src="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg" alt="GitHub contribution graph — snake animation" width="880"/>
->>>>>>> e0b03b9de57b292d1292403a7c554ae8ea813e9b
 </picture>
 
 <br/> 
@@ -75,16 +58,18 @@
 <br/>
 
 <a href="https://myk-codes.web.app">
-  <img src="assets/generated/btn-portfolio.svg" alt="Open Portfolio" width="320"/>
+  <img src="assets/generated/btn-portfolio.svg" alt="Open Portfolio" width="880"/>
 </a>
 
 <br/>
 
-<a href="https://linkedin.com/in/mynksharma"><img src="assets/generated/btn-linkedin.svg" alt="LinkedIn" width="140"/></a>
+<a href="https://linkedin.com/in/mynksharma"><img src="assets/generated/btn-linkedin.svg" alt="LinkedIn" width="180"/></a>
 &nbsp;&nbsp;
-<a href="https://instagram.com/mynk_911"><img src="assets/generated/btn-instagram.svg" alt="Instagram" width="140"/></a>
+<a href="https://instagram.com/mynk_911"><img src="assets/generated/btn-instagram.svg" alt="Instagram" width="180"/></a>
 &nbsp;&nbsp;
-<a href="mailto:ffmayank55@gmail.com"><img src="assets/generated/btn-email.svg" alt="Email" width="140"/></a>
+<a href="https://facebook.com/mykcodes"><img src="assets/generated/btn-facebook.svg" alt="Facebook" width="180"/></a>
+&nbsp;&nbsp;
+<a href="mailto:ffmayank55@gmail.com"><img src="assets/generated/btn-email.svg" alt="Email" width="180"/></a>
 
 <br/>
 
@@ -92,6 +77,6 @@
 
 <br/>
 
-<img src="https://komarev.com/ghpvc/?username=mykcodes&style=flat-square&color=161B22&label=profile.views" alt="Profile views"/>
+<img src="assets/generated/profile-views.svg" alt="Profile views" width="280"/>
 
 </div>

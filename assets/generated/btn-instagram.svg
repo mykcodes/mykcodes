@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="140" height="40" viewBox="0 0 140 40">
-  <rect width="140" height="40" rx="6" fill="#161B22" stroke="#21262D" stroke-width="0.5"/>
-  <rect x="0" y="39" width="140" height="1" fill="#484F58" opacity="0.2"/>
-  <text x="70" y="24" text-anchor="middle" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1">INSTAGRAM</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="44" viewBox="0 0 180 44">
+  <rect width="180" height="44" rx="6" fill="#161B22" stroke="#21262D" stroke-width="0.5"/>
+  <rect x="0" y="43" width="180" height="1" rx="0" fill="#484F58" opacity="0.15"/>
+  <g transform="translate(14, 14) scale(0.66)" fill="#8B949E" opacity="0.7">
+    <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3zm5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-2.5a1 1 0 100 2 1 1 0 000-2z"/>
+  </g>
+  <text x="38" y="26" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1.2">INSTAGRAM</text>
+  <text x="166" y="25" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10" opacity="0.4">→</text>
 </svg>

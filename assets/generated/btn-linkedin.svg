@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="140" height="40" viewBox="0 0 140 40">
-  <rect width="140" height="40" rx="6" fill="#161B22" stroke="#21262D" stroke-width="0.5"/>
-  <rect x="0" y="39" width="140" height="1" fill="#484F58" opacity="0.2"/>
-  <text x="70" y="24" text-anchor="middle" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1">LINKEDIN</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="44" viewBox="0 0 180 44">
+  <rect width="180" height="44" rx="6" fill="#161B22" stroke="#21262D" stroke-width="0.5"/>
+  <rect x="0" y="43" width="180" height="1" rx="0" fill="#484F58" opacity="0.15"/>
+  <g transform="translate(14, 14) scale(0.66)" fill="#8B949E" opacity="0.7">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v12h-4V8zm7.09.01C7.85 8.01 8.07 8 8.5 8h3.5v1.75h.05c.5-.95 1.72-1.95 3.54-1.95 3.78 0 4.48 2.49 4.48 5.73V20h-4v-5.66c0-1.35-.02-3.09-1.88-3.09-1.88 0-2.17 1.47-2.17 2.99V20h-4V8.01z"/>
+  </g>
+  <text x="38" y="26" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1.2">LINKEDIN</text>
+  <text x="166" y="25" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10" opacity="0.4">→</text>
 </svg>

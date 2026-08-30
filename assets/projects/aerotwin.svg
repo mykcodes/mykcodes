@@ -15,7 +15,7 @@
   
   <rect width="432" height="240" rx="8" fill="url(#cg-aerotwin)" stroke="#30363D" stroke-width="0.5"/>
   <rect width="432" height="240" rx="8" fill="url(#grid-aerotwin)"/>
-  <rect x="0" y="0" width="432" height="1.5" rx="8" fill="url(#ca-aerotwin)"/>
+  <rect x="0" y="0" width="432" height="1.5" rx="8" fill="#30363D" opacity="0.4"/>
   
   
             <g stroke="#82AAFF" opacity="0.3" stroke-width="0.5">
