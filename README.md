@@ -28,15 +28,9 @@
 <br/>
 
 <picture>
-<<<<<<< HEAD
   <source media="(prefers-color-scheme: dark)" srcset="assets/generated/github-snake-dark.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="assets/generated/github-snake.svg"/>
   <img alt="GitHub contribution graph — snake animation" src="assets/generated/github-snake-dark.svg" width="880"/>
-=======
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake.svg"/>
-  <img src="https://raw.githubusercontent.com/mykcodes/mykcodes/output/github-snake-dark.svg" alt="GitHub contribution graph — snake animation" width="880"/>
->>>>>>> e0b03b9de57b292d1292403a7c554ae8ea813e9b
 </picture>
 
 <br/> 
