@@ -4,7 +4,7 @@
 <img src="assets/generated/header-telemetry.svg" alt="GitHub Telemetry — real-time metrics" width="880"/>
 <br/>
 <a href="https://github.com/mykcodes">
-  <img src="https://github-readme-stats-fast.vercel.app/api/streak?username=mykcodes&theme=dark" alt="GitHub contribution streak" width="880" height="220"/>
+  <img src="https://streak-stats.demolab.com?user=mykcodes&theme=black-ice&hide_border=true&border_radius=10&card_width=880&card_height=220" alt="GitHub contribution streak" width="880" height="220"/>
 </a>
 <br/>
 <img src="assets/generated/header-stats.svg" alt="GitHub Statistics — performance overview" width="880"/>
