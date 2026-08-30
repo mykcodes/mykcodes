@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="200" viewBox="0 0 432 200">
+  <rect width="432" height="200" rx="8" fill="#161B22" stroke="#30363D" stroke-width="0.5"/>
+  <text x="24" y="32" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2">GITHUB.STATISTICS</text>
+  <line x1="24" y1="44" x2="408" y2="44" stroke="#21262D" stroke-width="0.5"/>
+  <circle cx="32" cy="71" r="3" fill="#64FFDA" opacity="0.8"/>
+  <text x="48" y="75" fill="#8B949E" font-family="'SF Mono',monospace" font-size="11" letter-spacing="0.5">Total Stars</text>
+  <text x="408" y="75" text-anchor="end" fill="#E6EDF3" font-family="'SF Mono',monospace" font-size="11" font-weight="600">128</text>
+  <circle cx="32" cy="99" r="3" fill="#82AAFF" opacity="0.8"/>
+  <text x="48" y="103" fill="#8B949E" font-family="'SF Mono',monospace" font-size="11" letter-spacing="0.5">Total Commits</text>
+  <text x="408" y="103" text-anchor="end" fill="#E6EDF3" font-family="'SF Mono',monospace" font-size="11" font-weight="600">1,452</text>
+  <circle cx="32" cy="127" r="3" fill="#C792EA" opacity="0.8"/>
+  <text x="48" y="131" fill="#8B949E" font-family="'SF Mono',monospace" font-size="11" letter-spacing="0.5">Pull Requests</text>
+  <text x="408" y="131" text-anchor="end" fill="#E6EDF3" font-family="'SF Mono',monospace" font-size="11" font-weight="600">56</text>
+  <circle cx="32" cy="155" r="3" fill="#F78C6C" opacity="0.8"/>
+  <text x="48" y="159" fill="#8B949E" font-family="'SF Mono',monospace" font-size="11" letter-spacing="0.5">Issues</text>
+  <text x="408" y="159" text-anchor="end" fill="#E6EDF3" font-family="'SF Mono',monospace" font-size="11" font-weight="600">24</text>
+  <circle cx="32" cy="183" r="3" fill="#8B949E" opacity="0.8"/>
+  <text x="48" y="187" fill="#8B949E" font-family="'SF Mono',monospace" font-size="11" letter-spacing="0.5">Repositories</text>
+  <text x="408" y="187" text-anchor="end" fill="#E6EDF3" font-family="'SF Mono',monospace" font-size="11" font-weight="600">34</text>
+</svg>

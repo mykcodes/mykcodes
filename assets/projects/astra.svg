@@ -1,34 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="432" height="200" viewBox="0 0 432 200">
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="240" viewBox="0 0 432 240">
   <defs>
-    <linearGradient id="cg-astra" x1="0" y1="0" x2="432" y2="200">
+    <linearGradient id="cg-astra" x1="0" y1="0" x2="432" y2="240">
       <stop offset="0%" stop-color="#161B22"/>
       <stop offset="100%" stop-color="#1C2128"/>
     </linearGradient>
     <linearGradient id="ca-astra" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#64FFDA" stop-opacity="0.45"/>
+      <stop offset="0%" stop-color="#64FFDA" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#64FFDA" stop-opacity="0"/>
     </linearGradient>
+    <pattern id="grid-astra" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#21262D" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
   </defs>
-  <rect width="432" height="200" rx="8" fill="url(#cg-astra)" stroke="#30363D" stroke-width="0.5"/>
-  <rect x="0" y="0" width="432" height="2" rx="8" fill="url(#ca-astra)"/>
   
-  <text x="20" y="30" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2" opacity="0.4">01</text>
-  <text x="46" y="30" fill="#64FFDA" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1.5" opacity="0.65">AI · SYSTEMS</text>
+  <rect width="432" height="240" rx="8" fill="url(#cg-astra)" stroke="#30363D" stroke-width="0.5"/>
+  <rect width="432" height="240" rx="8" fill="url(#grid-astra)"/>
+  <rect x="0" y="0" width="432" height="1.5" rx="8" fill="url(#ca-astra)"/>
   
-  <circle cx="412" cy="24" r="2.5" fill="#64FFDA" opacity="0.55"/>
-  <text x="402" y="28" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="0.5">IN DEVELOPMENT</text>
   
-  <text x="20" y="62" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="20" font-weight="600" letter-spacing="0.3">ASTRA</text>
-  <line x1="20" y1="72" x2="412" y2="72" stroke="#21262D" stroke-width="0.4"/>
-  <text x="20" y="90" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">A voice-first AI system with modular orchestration — memory,</text>
-  <text x="20" y="105" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">world state, permissions, recovery, and multi-provider</text>
-  <text x="20" y="120" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">intelligence.</text>
-  <rect x="20" y="170" width="48.8" height="16" rx="3" fill="#64FFDA" opacity="0.08" stroke="#64FFDA" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="27" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Python</text>
-  <rect x="73.8" y="170" width="54.6" height="16" rx="3" fill="#64FFDA" opacity="0.08" stroke="#64FFDA" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="80.8" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">FastAPI</text>
-  <rect x="133.4" y="170" width="37.2" height="16" rx="3" fill="#64FFDA" opacity="0.08" stroke="#64FFDA" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="140.4" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">LLMs</text>
-  <rect x="175.60000000000002" y="170" width="72.0" height="16" rx="3" fill="#64FFDA" opacity="0.08" stroke="#64FFDA" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="182.60000000000002" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">WebSockets</text>
+            <g stroke="#64FFDA" opacity="0.3" stroke-width="0.5">
+                <circle cx="340" cy="90" r="40" fill="none" stroke-dasharray="2 4"/>
+                <circle cx="340" cy="90" r="20" fill="none"/>
+                <path d="M 280 90 L 320 90 M 360 90 L 400 90 M 340 30 L 340 70 M 340 110 L 340 150"/>
+                <circle cx="340" cy="90" r="4" fill="#64FFDA" opacity="0.8"/>
+            </g>
+  
+  <text x="24" y="32" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2" opacity="0.6">01</text>
+  <text x="52" y="32" fill="#64FFDA" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1.5" opacity="0.75">AI · SYSTEMS</text>
+  
+  <circle cx="408" cy="26" r="3" fill="#64FFDA" opacity="0.6"/>
+  <text x="396" y="30" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="8" letter-spacing="0.5">IN DEVELOPMENT</text>
+  
+  <text x="24" y="72" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="22" font-weight="600" letter-spacing="0.2">ASTRA</text>
+  <line x1="24" y1="88" x2="408" y2="88" stroke="#21262D" stroke-width="0.4"/>
+  <text x="24" y="112" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">A voice-first AI system with modular orchestration — memory,</text>
+  <text x="24" y="130" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">world state, permissions, recovery, and multi-provider</text>
+  <text x="24" y="148" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">intelligence.</text>
+  <rect x="24" y="204" width="50.8" height="18" rx="4" fill="#64FFDA" opacity="0.08" stroke="#64FFDA" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="32" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Python</text>
+  <rect x="82.8" y="204" width="56.6" height="18" rx="4" fill="#64FFDA" opacity="0.08" stroke="#64FFDA" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="90.8" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">FastAPI</text>
+  <rect x="147.39999999999998" y="204" width="39.2" height="18" rx="4" fill="#64FFDA" opacity="0.08" stroke="#64FFDA" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="155.39999999999998" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">LLMs</text>
+  <rect x="194.59999999999997" y="204" width="74.0" height="18" rx="4" fill="#64FFDA" opacity="0.08" stroke="#64FFDA" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="202.59999999999997" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">WebSockets</text>
+  <text x="408" y="218" text-anchor="end" fill="#64FFDA" font-family="'SF Mono',monospace" font-size="9" letter-spacing="1">VIEW PROJECT →</text>
 </svg>

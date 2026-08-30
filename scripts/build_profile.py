@@ -140,13 +140,8 @@ def main():
     print("  " + "-" * 38)
     print()
     
-    # Step 1: Generate SVG assets
-    print("[1/4] Generating SVG assets...")
-    from generate_assets import generate_all
-    generate_all()
-    
-    # Step 2: Portrait
-    print("\n[2/4] Portrait animation...")
+    # Step 1: Portrait (Generate first so it can be embedded in SVG)
+    print("[1/4] Portrait animation...")
     portrait_src = ROOT / "assets" / "source" / "portrait.png"
     logo_src = ROOT / "assets" / "source" / "logo.png"
     
@@ -157,14 +152,24 @@ def main():
     else:
         print("       No source images. Skipping.")
         print(f"       Place images in: assets/source/")
+
+    # Step 2: Generate SVG assets
+    print("\n[2/4] Generating SVG assets...")
+    from generate_assets import generate_all
+    generate_all()
     
-    # Step 3: Build README
-    print("\n[3/4] Building README.md...")
+    # Step 3: Fetch GitHub Stats
+    print("\n[3/5] Fetching GitHub Stats...")
+    from generate_github_stats import main as generate_stats
+    generate_stats()
+    
+    # Step 4: Build README
+    print("\n[4/5] Building README.md...")
     config = load_config()
     build_readme(config)
     
-    # Step 4: Validate
-    print("\n[4/4] Validating...")
+    # Step 5: Validate
+    print("\n[5/5] Validating...")
     validate()
     
     print("\n  Build complete.\n")

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="200" viewBox="0 0 432 200">
+  <rect width="432" height="200" rx="8" fill="#161B22" stroke="#30363D" stroke-width="0.5"/>
+  <text x="24" y="32" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2">LANGUAGE.DISTRIBUTION</text>
+  <line x1="24" y1="44" x2="408" y2="44" stroke="#21262D" stroke-width="0.5"/>
+  <rect x="24" y="70" width="384" height="10" rx="5" fill="#1C2128"/>
+  <rect x="24" y="70" width="173.568" height="10" fill="#3572A5"/>
+  <rect x="197.568" y="70" width="109.44" height="10" fill="#3178C6"/>
+  <rect x="307.00800000000004" y="70" width="57.599999999999994" height="10" fill="#f34b7d"/>
+  <rect x="364.60800000000006" y="70" width="31.872" height="10" fill="#00B4AB"/>
+  <rect x="396.4800000000001" y="70" width="11.52" height="10" fill="#89e051"/>
+  <rect x="24" y="70" width="384" height="10" rx="5" fill="none" stroke="#161B22" stroke-width="2"/>
+  <circle cx="28" cy="107" r="4" fill="#3572A5"/>
+  <text x="38" y="111" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10">Python</text>
+  <text x="134" y="111" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">45.2%</text>
+  <circle cx="28" cy="131" r="4" fill="#3178C6"/>
+  <text x="38" y="135" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10">TypeScript</text>
+  <text x="134" y="135" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">28.5%</text>
+  <circle cx="28" cy="155" r="4" fill="#f34b7d"/>
+  <text x="38" y="159" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10">C++</text>
+  <text x="134" y="159" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">15.0%</text>
+  <circle cx="230.0" cy="107" r="4" fill="#00B4AB"/>
+  <text x="240.0" y="111" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10">Dart</text>
+  <text x="336.0" y="111" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">8.3%</text>
+  <circle cx="230.0" cy="131" r="4" fill="#89e051"/>
+  <text x="240.0" y="135" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10">Shell</text>
+  <text x="336.0" y="135" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">3.0%</text>
+</svg>

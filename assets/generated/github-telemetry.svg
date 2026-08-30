@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="120" viewBox="0 0 880 120">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="880" y2="120">
+      <stop offset="0%" stop-color="#161B22"/>
+      <stop offset="100%" stop-color="#1C2128"/>
+    </linearGradient>
+  </defs>
+  <rect width="880" height="120" rx="8" fill="url(#bg)" stroke="#30363D" stroke-width="0.5"/>
+  <rect width="880" height="2" rx="8" fill="#64FFDA" opacity="0.4"/>
+  
+  <g transform="translate(0, 0)">
+    <!-- Contribs -->
+    <text x="146.66666666666666" y="45" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1.5">TOTAL CONTRIBUTIONS</text>
+    <text x="146.66666666666666" y="85" text-anchor="middle" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="32" font-weight="600">1,452</text>
+    
+    <!-- Sep 1 -->
+    <line x1="293.3333333333333" y1="30" x2="293.3333333333333" y2="90" stroke="#21262D" stroke-width="0.5"/>
+    
+    <!-- Current Streak -->
+    <text x="440.0" y="45" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1.5">CURRENT STREAK</text>
+    <text x="440.0" y="85" text-anchor="middle" fill="#64FFDA" font-family="'Inter','Segoe UI',sans-serif" font-size="32" font-weight="600">12 days</text>
+    
+    <!-- Sep 2 -->
+    <line x1="586.6666666666666" y1="30" x2="586.6666666666666" y2="90" stroke="#21262D" stroke-width="0.5"/>
+    
+    <!-- Longest Streak -->
+    <text x="733.3333333333334" y="45" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1.5">LONGEST STREAK</text>
+    <text x="733.3333333333334" y="85" text-anchor="middle" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="32" font-weight="600">45 days</text>
+  </g>
+</svg>

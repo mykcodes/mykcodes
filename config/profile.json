@@ -1,7 +1,7 @@
 {
   "identity": {
     "name": "Mayank Sharma",
-    "username": "YOUR_GITHUB_USERNAME",
+    "username": "mykcodes",
     "headline": "CSE Student · Builder · UI-Minded Engineer",
     "short_bio": "I build systems that work well and feel right. Interested in the space where engineering meets design — from AI orchestration to interface craft.",
     "location": "India",
@@ -15,12 +15,12 @@
     "open_to": "Interesting Collaboration"
   },
   "links": {
-    "github": "https://github.com/YOUR_GITHUB_USERNAME",
-    "portfolio": "https://YOUR_PORTFOLIO_URL",
-    "linkedin": "https://linkedin.com/in/YOUR_LINKEDIN",
-    "instagram": "https://instagram.com/YOUR_INSTAGRAM",
-    "facebook": "https://facebook.com/YOUR_FACEBOOK",
-    "email": "your.email@example.com"
+    "github": "https://github.com/mykcodes",
+    "portfolio": "https://mykcodes.com",
+    "linkedin": "https://linkedin.com/in/mykcodes",
+    "instagram": "https://instagram.com/mykcodes",
+    "facebook": "https://facebook.com/mykcodes",
+    "email": "contact@mykcodes.com"
   },
   "projects": [
     {
@@ -31,7 +31,7 @@
       "description": "A voice-first AI system with modular orchestration — memory, world state, permissions, recovery, and multi-provider intelligence.",
       "technologies": ["Python", "FastAPI", "LLMs", "WebSockets"],
       "status": "In Development",
-      "repo": "YOUR_GITHUB_USERNAME/astra",
+      "repo": "mykcodes/astra",
       "color_accent": "#64FFDA"
     },
     {
@@ -42,7 +42,7 @@
       "description": "Real-time digital twin for aerospace engine health — anomaly detection, degradation tracking, and remaining useful life estimation.",
       "technologies": ["Python", "AI/ML", "Telemetry", "Real-Time"],
       "status": "In Development",
-      "repo": "YOUR_GITHUB_USERNAME/aerotwin-x",
+      "repo": "mykcodes/aerotwin-x",
       "color_accent": "#82AAFF"
     },
     {
@@ -53,7 +53,7 @@
       "description": "A digital learning workspace — clean navigation through notes, subjects, and documents, designed for focused study.",
       "technologies": ["Flutter", "Dart", "UI/UX"],
       "status": "Active",
-      "repo": "YOUR_GITHUB_USERNAME/saraswati",
+      "repo": "mykcodes/saraswati",
       "color_accent": "#C792EA"
     },
     {
@@ -64,7 +64,7 @@
       "description": "Interface experiments and personal design exploration — a living collection of how I think about software experiences.",
       "technologies": ["React", "TypeScript", "CSS", "Motion"],
       "status": "Ongoing",
-      "repo": "YOUR_GITHUB_USERNAME/portfolio",
+      "repo": "mykcodes/portfolio",
       "color_accent": "#F78C6C"
     }
   ],

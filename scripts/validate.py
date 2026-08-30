@@ -55,6 +55,9 @@ def validate_assets():
         "hero.svg", "stack.svg", "contact.svg", "footer.svg",
         "header-telemetry.svg", "header-stats.svg", "header-toolkit.svg",
         "header-contribution.svg", "header-projects.svg", "header-connect.svg",
+        "github-telemetry.svg", "github-stats.svg", "github-languages.svg",
+        "btn-portfolio.svg", "btn-linkedin.svg", "btn-instagram.svg", 
+        "btn-facebook.svg", "btn-email.svg"
     ]
     
     for f in required_gen:

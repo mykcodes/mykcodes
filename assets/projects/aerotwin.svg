@@ -1,34 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="432" height="200" viewBox="0 0 432 200">
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="240" viewBox="0 0 432 240">
   <defs>
-    <linearGradient id="cg-aerotwin" x1="0" y1="0" x2="432" y2="200">
+    <linearGradient id="cg-aerotwin" x1="0" y1="0" x2="432" y2="240">
       <stop offset="0%" stop-color="#161B22"/>
       <stop offset="100%" stop-color="#1C2128"/>
     </linearGradient>
     <linearGradient id="ca-aerotwin" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#82AAFF" stop-opacity="0.45"/>
+      <stop offset="0%" stop-color="#82AAFF" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#82AAFF" stop-opacity="0"/>
     </linearGradient>
+    <pattern id="grid-aerotwin" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#21262D" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
   </defs>
-  <rect width="432" height="200" rx="8" fill="url(#cg-aerotwin)" stroke="#30363D" stroke-width="0.5"/>
-  <rect x="0" y="0" width="432" height="2" rx="8" fill="url(#ca-aerotwin)"/>
   
-  <text x="20" y="30" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2" opacity="0.4">02</text>
-  <text x="46" y="30" fill="#82AAFF" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1.5" opacity="0.65">AI · AEROSPACE</text>
+  <rect width="432" height="240" rx="8" fill="url(#cg-aerotwin)" stroke="#30363D" stroke-width="0.5"/>
+  <rect width="432" height="240" rx="8" fill="url(#grid-aerotwin)"/>
+  <rect x="0" y="0" width="432" height="1.5" rx="8" fill="url(#ca-aerotwin)"/>
   
-  <circle cx="412" cy="24" r="2.5" fill="#82AAFF" opacity="0.55"/>
-  <text x="402" y="28" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="0.5">IN DEVELOPMENT</text>
   
-  <text x="20" y="62" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="20" font-weight="600" letter-spacing="0.3">AeroTwin-X</text>
-  <line x1="20" y1="72" x2="412" y2="72" stroke="#21262D" stroke-width="0.4"/>
-  <text x="20" y="90" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">Real-time digital twin for aerospace engine health — anomaly</text>
-  <text x="20" y="105" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">detection, degradation tracking, and remaining useful life</text>
-  <text x="20" y="120" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">estimation.</text>
-  <rect x="20" y="170" width="48.8" height="16" rx="3" fill="#82AAFF" opacity="0.08" stroke="#82AAFF" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="27" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Python</text>
-  <rect x="73.8" y="170" width="43.0" height="16" rx="3" fill="#82AAFF" opacity="0.08" stroke="#82AAFF" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="80.8" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">AI/ML</text>
-  <rect x="121.8" y="170" width="66.19999999999999" height="16" rx="3" fill="#82AAFF" opacity="0.08" stroke="#82AAFF" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="128.8" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Telemetry</text>
-  <rect x="193.0" y="170" width="66.19999999999999" height="16" rx="3" fill="#82AAFF" opacity="0.08" stroke="#82AAFF" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="200.0" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Real-Time</text>
+            <g stroke="#82AAFF" opacity="0.3" stroke-width="0.5">
+                <path d="M 290 120 L 320 60 L 360 60 L 390 120 Z" fill="none"/>
+                <line x1="290" y1="100" x2="390" y2="100"/>
+                <line x1="305" y1="80" x2="375" y2="80"/>
+                <circle cx="340" cy="120" r="15" fill="none" stroke-dasharray="2 2"/>
+            </g>
+  
+  <text x="24" y="32" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2" opacity="0.6">02</text>
+  <text x="52" y="32" fill="#82AAFF" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1.5" opacity="0.75">AI · AEROSPACE</text>
+  
+  <circle cx="408" cy="26" r="3" fill="#82AAFF" opacity="0.6"/>
+  <text x="396" y="30" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="8" letter-spacing="0.5">IN DEVELOPMENT</text>
+  
+  <text x="24" y="72" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="22" font-weight="600" letter-spacing="0.2">AeroTwin-X</text>
+  <line x1="24" y1="88" x2="408" y2="88" stroke="#21262D" stroke-width="0.4"/>
+  <text x="24" y="112" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">Real-time digital twin for aerospace engine health — anomaly</text>
+  <text x="24" y="130" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">detection, degradation tracking, and remaining useful life</text>
+  <text x="24" y="148" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">estimation.</text>
+  <rect x="24" y="204" width="50.8" height="18" rx="4" fill="#82AAFF" opacity="0.08" stroke="#82AAFF" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="32" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Python</text>
+  <rect x="82.8" y="204" width="45.0" height="18" rx="4" fill="#82AAFF" opacity="0.08" stroke="#82AAFF" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="90.8" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">AI/ML</text>
+  <rect x="135.8" y="204" width="68.19999999999999" height="18" rx="4" fill="#82AAFF" opacity="0.08" stroke="#82AAFF" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="143.8" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Telemetry</text>
+  <rect x="212.0" y="204" width="68.19999999999999" height="18" rx="4" fill="#82AAFF" opacity="0.08" stroke="#82AAFF" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="220.0" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Real-Time</text>
+  <text x="408" y="218" text-anchor="end" fill="#82AAFF" font-family="'SF Mono',monospace" font-size="9" letter-spacing="1">VIEW PROJECT →</text>
 </svg>

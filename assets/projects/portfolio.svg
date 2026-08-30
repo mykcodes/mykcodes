@@ -1,33 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="432" height="200" viewBox="0 0 432 200">
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="240" viewBox="0 0 432 240">
   <defs>
-    <linearGradient id="cg-portfolio" x1="0" y1="0" x2="432" y2="200">
+    <linearGradient id="cg-portfolio" x1="0" y1="0" x2="432" y2="240">
       <stop offset="0%" stop-color="#161B22"/>
       <stop offset="100%" stop-color="#1C2128"/>
     </linearGradient>
     <linearGradient id="ca-portfolio" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#F78C6C" stop-opacity="0.45"/>
+      <stop offset="0%" stop-color="#F78C6C" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#F78C6C" stop-opacity="0"/>
     </linearGradient>
+    <pattern id="grid-portfolio" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#21262D" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
   </defs>
-  <rect width="432" height="200" rx="8" fill="url(#cg-portfolio)" stroke="#30363D" stroke-width="0.5"/>
-  <rect x="0" y="0" width="432" height="2" rx="8" fill="url(#ca-portfolio)"/>
   
-  <text x="20" y="30" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2" opacity="0.4">04</text>
-  <text x="46" y="30" fill="#F78C6C" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1.5" opacity="0.65">DESIGN · WEB</text>
+  <rect width="432" height="240" rx="8" fill="url(#cg-portfolio)" stroke="#30363D" stroke-width="0.5"/>
+  <rect width="432" height="240" rx="8" fill="url(#grid-portfolio)"/>
+  <rect x="0" y="0" width="432" height="1.5" rx="8" fill="url(#ca-portfolio)"/>
   
-  <circle cx="412" cy="24" r="2.5" fill="#F78C6C" opacity="0.55"/>
-  <text x="402" y="28" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="0.5">ONGOING</text>
   
-  <text x="20" y="62" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="20" font-weight="600" letter-spacing="0.3">Portfolio</text>
-  <line x1="20" y1="72" x2="412" y2="72" stroke="#21262D" stroke-width="0.4"/>
-  <text x="20" y="90" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">Interface experiments and personal design exploration — a living</text>
-  <text x="20" y="105" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">collection of how I think about software experiences.</text>
-  <rect x="20" y="170" width="43.0" height="16" rx="3" fill="#F78C6C" opacity="0.08" stroke="#F78C6C" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="27" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">React</text>
-  <rect x="68.0" y="170" width="72.0" height="16" rx="3" fill="#F78C6C" opacity="0.08" stroke="#F78C6C" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="75.0" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">TypeScript</text>
-  <rect x="145.0" y="170" width="31.4" height="16" rx="3" fill="#F78C6C" opacity="0.08" stroke="#F78C6C" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="152.0" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">CSS</text>
-  <rect x="181.4" y="170" width="48.8" height="16" rx="3" fill="#F78C6C" opacity="0.08" stroke="#F78C6C" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="188.4" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Motion</text>
+            <g stroke="#F78C6C" opacity="0.3" stroke-width="0.5">
+                <rect x="290" y="60" width="90" height="60" rx="4" fill="none"/>
+                <circle cx="305" cy="75" r="3" fill="none"/>
+                <circle cx="315" cy="75" r="3" fill="none"/>
+                <line x1="290" y1="90" x2="380" y2="90"/>
+            </g>
+  
+  <text x="24" y="32" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2" opacity="0.6">04</text>
+  <text x="52" y="32" fill="#F78C6C" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1.5" opacity="0.75">DESIGN · WEB</text>
+  
+  <circle cx="408" cy="26" r="3" fill="#F78C6C" opacity="0.6"/>
+  <text x="396" y="30" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="8" letter-spacing="0.5">ONGOING</text>
+  
+  <text x="24" y="72" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="22" font-weight="600" letter-spacing="0.2">Portfolio</text>
+  <line x1="24" y1="88" x2="408" y2="88" stroke="#21262D" stroke-width="0.4"/>
+  <text x="24" y="112" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">Interface experiments and personal design exploration — a living</text>
+  <text x="24" y="130" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">collection of how I think about software experiences.</text>
+  <rect x="24" y="204" width="45.0" height="18" rx="4" fill="#F78C6C" opacity="0.08" stroke="#F78C6C" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="32" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">React</text>
+  <rect x="77.0" y="204" width="74.0" height="18" rx="4" fill="#F78C6C" opacity="0.08" stroke="#F78C6C" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="85.0" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">TypeScript</text>
+  <rect x="159.0" y="204" width="33.4" height="18" rx="4" fill="#F78C6C" opacity="0.08" stroke="#F78C6C" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="167.0" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">CSS</text>
+  <rect x="200.4" y="204" width="50.8" height="18" rx="4" fill="#F78C6C" opacity="0.08" stroke="#F78C6C" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="208.4" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Motion</text>
+  <text x="408" y="218" text-anchor="end" fill="#F78C6C" font-family="'SF Mono',monospace" font-size="9" letter-spacing="1">VIEW PROJECT →</text>
 </svg>

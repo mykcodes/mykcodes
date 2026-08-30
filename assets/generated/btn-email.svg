@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="40" viewBox="0 0 140 40">
+  <rect width="140" height="40" rx="6" fill="#161B22" stroke="#21262D" stroke-width="0.5"/>
+  <rect x="0" y="39" width="140" height="1" fill="#484F58" opacity="0.2"/>
+  <text x="70" y="24" text-anchor="middle" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10" letter-spacing="1">EMAIL</text>
+</svg>

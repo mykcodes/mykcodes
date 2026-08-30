@@ -1,31 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="432" height="200" viewBox="0 0 432 200">
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="240" viewBox="0 0 432 240">
   <defs>
-    <linearGradient id="cg-saraswati" x1="0" y1="0" x2="432" y2="200">
+    <linearGradient id="cg-saraswati" x1="0" y1="0" x2="432" y2="240">
       <stop offset="0%" stop-color="#161B22"/>
       <stop offset="100%" stop-color="#1C2128"/>
     </linearGradient>
     <linearGradient id="ca-saraswati" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#C792EA" stop-opacity="0.45"/>
+      <stop offset="0%" stop-color="#C792EA" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#C792EA" stop-opacity="0"/>
     </linearGradient>
+    <pattern id="grid-saraswati" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#21262D" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
   </defs>
-  <rect width="432" height="200" rx="8" fill="url(#cg-saraswati)" stroke="#30363D" stroke-width="0.5"/>
-  <rect x="0" y="0" width="432" height="2" rx="8" fill="url(#ca-saraswati)"/>
   
-  <text x="20" y="30" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2" opacity="0.4">03</text>
-  <text x="46" y="30" fill="#C792EA" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1.5" opacity="0.65">PRODUCTIVITY · LEARNING</text>
+  <rect width="432" height="240" rx="8" fill="url(#cg-saraswati)" stroke="#30363D" stroke-width="0.5"/>
+  <rect width="432" height="240" rx="8" fill="url(#grid-saraswati)"/>
+  <rect x="0" y="0" width="432" height="1.5" rx="8" fill="url(#ca-saraswati)"/>
   
-  <circle cx="412" cy="24" r="2.5" fill="#C792EA" opacity="0.55"/>
-  <text x="402" y="28" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="0.5">ACTIVE</text>
   
-  <text x="20" y="62" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="20" font-weight="600" letter-spacing="0.3">SARASWATI</text>
-  <line x1="20" y1="72" x2="412" y2="72" stroke="#21262D" stroke-width="0.4"/>
-  <text x="20" y="90" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">A digital learning workspace — clean navigation through notes,</text>
-  <text x="20" y="105" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="10.5" opacity="0.8">subjects, and documents, designed for focused study.</text>
-  <rect x="20" y="170" width="54.6" height="16" rx="3" fill="#C792EA" opacity="0.08" stroke="#C792EA" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="27" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Flutter</text>
-  <rect x="79.6" y="170" width="37.2" height="16" rx="3" fill="#C792EA" opacity="0.08" stroke="#C792EA" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="86.6" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Dart</text>
-  <rect x="121.8" y="170" width="43.0" height="16" rx="3" fill="#C792EA" opacity="0.08" stroke="#C792EA" stroke-width="0.35" stroke-opacity="0.25"/>
-  <text x="128.8" y="181" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">UI/UX</text>
+            <g stroke="#C792EA" opacity="0.3" stroke-width="0.5">
+                <rect x="300" y="50" width="60" height="80" rx="2" fill="none"/>
+                <line x1="310" y1="65" x2="350" y2="65"/>
+                <line x1="310" y1="80" x2="350" y2="80"/>
+                <line x1="310" y1="95" x2="340" y2="95"/>
+                <rect x="320" y="60" width="60" height="80" rx="2" fill="none" stroke-dasharray="1 3"/>
+            </g>
+  
+  <text x="24" y="32" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2" opacity="0.6">03</text>
+  <text x="52" y="32" fill="#C792EA" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1.5" opacity="0.75">PRODUCTIVITY · LEARNING</text>
+  
+  <circle cx="408" cy="26" r="3" fill="#C792EA" opacity="0.6"/>
+  <text x="396" y="30" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="8" letter-spacing="0.5">ACTIVE</text>
+  
+  <text x="24" y="72" fill="#E6EDF3" font-family="'Inter','Segoe UI',sans-serif" font-size="22" font-weight="600" letter-spacing="0.2">SARASWATI</text>
+  <line x1="24" y1="88" x2="408" y2="88" stroke="#21262D" stroke-width="0.4"/>
+  <text x="24" y="112" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">A digital learning workspace — clean navigation through notes,</text>
+  <text x="24" y="130" fill="#8B949E" font-family="'Inter','Segoe UI',sans-serif" font-size="11" opacity="0.85">subjects, and documents, designed for focused study.</text>
+  <rect x="24" y="204" width="56.6" height="18" rx="4" fill="#C792EA" opacity="0.08" stroke="#C792EA" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="32" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Flutter</text>
+  <rect x="88.6" y="204" width="39.2" height="18" rx="4" fill="#C792EA" opacity="0.08" stroke="#C792EA" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="96.6" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">Dart</text>
+  <rect x="135.8" y="204" width="45.0" height="18" rx="4" fill="#C792EA" opacity="0.08" stroke="#C792EA" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="143.8" y="216" fill="#8B949E" font-family="'SF Mono',monospace" font-size="8.5">UI/UX</text>
+  <text x="408" y="218" text-anchor="end" fill="#C792EA" font-family="'SF Mono',monospace" font-size="9" letter-spacing="1">VIEW PROJECT →</text>
 </svg>
