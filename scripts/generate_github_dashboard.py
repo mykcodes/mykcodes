@@ -1,6 +1,6 @@
 """
-GitHub Dashboard Generator
-============================
+GitHub Dashboard Generator — Phase 6
+======================================
 Generates a full-width (880px) premium activity visualization SVG.
 Reads data from data/github_profile.json.
 
@@ -9,14 +9,21 @@ Features:
 - Smooth area chart from 52-week contribution calendar
 - Month labels, gridlines, gradient fill, peak markers
 - Premium dark-theme design language
+- Data freshness marker (SYNCED timestamp)
+- Machine-readable metadata (data_hash, generated_at, build_sha)
+- Sync commit marker (DATA hash + BUILD sha)
 
 Usage:
     python scripts/generate_github_dashboard.py
 """
 
+import hashlib
 import json
 import html
-import math
+import os
+import subprocess
+import tempfile
+import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -42,6 +49,28 @@ def esc(text):
 def fmt_number(n):
     """Format number with comma separator."""
     return f"{n:,}"
+
+
+def compute_data_hash():
+    """Compute SHA256 of the normalized JSON data file."""
+    content = DATA_PATH.read_text(encoding="utf-8")
+    data = json.loads(content)
+    canonical = json.dumps(data, sort_keys=True, ensure_ascii=True)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def get_git_sha():
+    """Get current git short SHA, or 'unknown' if not in a git repo."""
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True, text=True, timeout=5, cwd=str(ROOT)
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+    except Exception:
+        pass
+    return "unknown"
 
 
 def smooth_points(points, window=3):
@@ -75,6 +104,14 @@ def generate_dashboard():
     config = load_config()
     d = config["design"]
     data = load_data()
+
+    # Compute hashes and build info
+    data_hash = compute_data_hash()
+    data_hash_short = data_hash[:8]
+    build_sha = get_git_sha()
+    generated_at = data.get("generated_at", datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"))
+    now_utc = datetime.datetime.utcnow()
+    synced_label = now_utc.strftime("%d %b %Y · %H:%M UTC").upper()
 
     W = 880
     H = 380
@@ -168,7 +205,17 @@ def generate_dashboard():
             x, y = points[i]
             data_dots += f'  <circle cx="{x:.1f}" cy="{y:.1f}" r="2" fill="{cyan}" opacity="0.6"/>\n'
 
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}"
+     data-version="{generated_at}"
+     data-hash="{data_hash_short}"
+     data-build="{build_sha}">
+  <metadata>
+    <generated_at>{generated_at}</generated_at>
+    <data_hash>{data_hash}</data_hash>
+    <data_hash_short>{data_hash_short}</data_hash_short>
+    <build_sha>{build_sha}</build_sha>
+    <synced>{synced_label}</synced>
+  </metadata>
   <defs>
     <linearGradient id="dash-bg" x1="0" y1="0" x2="{W}" y2="{H}">
       <stop offset="0%" stop-color="{bg}"/>
@@ -206,7 +253,7 @@ def generate_dashboard():
 
   <!-- Header -->
   <text x="24" y="28" fill="{t3}" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2">GITHUB.ACTIVITY</text>
-  <text x="185" y="28" fill="{t3}" font-family="'SF Mono',monospace" font-size="9" letter-spacing="1" opacity="0.35">— a year of building</text>
+  <text x="185" y="28" fill="{t3}" font-family="'SF Mono',monospace" font-size="9" letter-spacing="1" opacity="0.35">— auto-synced github data</text>
   <circle cx="{W - 24}" cy="22" r="3" fill="#27C93F" opacity="0.7"/>
   <text x="{W - 36}" y="26" text-anchor="end" fill="#27C93F" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="1" opacity="0.7">LIVE</text>
 
@@ -256,16 +303,47 @@ def generate_dashboard():
   <!-- Chart frame accent -->
   <line x1="{chart_left}" y1="{chart_top}" x2="{chart_left}" y2="{chart_bottom}" stroke="{border_s}" stroke-width="0.4" opacity="0.3"/>
 
-  <!-- Footer micro-label -->
-  <text x="{W / 2}" y="{H - 16}" text-anchor="middle" fill="{t3}" font-family="'SF Mono',monospace" font-size="7" letter-spacing="2" opacity="0.25">BUILD · COMMIT · REPEAT</text>
+  <!-- Freshness marker -->
+  <text x="24" y="{H - 14}" fill="{t3}" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED {synced_label}</text>
+
+  <!-- Sync commit marker -->
+  <text x="{W - 24}" y="{H - 14}" text-anchor="end" fill="{t3}" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA {data_hash_short} · BUILD {build_sha}</text>
 
 </svg>'''
 
+    # Atomic write: generate to temp, validate, then replace
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(svg, encoding="utf-8")
+    tmp_fd, tmp_path = tempfile.mkstemp(suffix=".svg", dir=str(OUTPUT_PATH.parent))
+    try:
+        with os.fdopen(tmp_fd, "w", encoding="utf-8") as tmp_f:
+            tmp_f.write(svg)
+
+        # Basic SVG validation
+        tmp_content = Path(tmp_path).read_text(encoding="utf-8")
+        if not tmp_content.startswith("<svg") or "</svg>" not in tmp_content:
+            raise ValueError("Generated SVG is malformed")
+        if len(tmp_content) < 500:
+            raise ValueError(f"Generated SVG suspiciously small: {len(tmp_content)} bytes")
+
+        # Atomic replace
+        Path(tmp_path).replace(OUTPUT_PATH)
+    except Exception as e:
+        # Cleanup temp file on failure
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        raise RuntimeError(f"Dashboard SVG generation failed: {e}") from e
+
+    # Compute SVG hash
+    svg_hash = hashlib.sha256(svg.encode("utf-8")).hexdigest()
 
     size = OUTPUT_PATH.stat().st_size
     print(f"[OK] Dashboard SVG: {OUTPUT_PATH} ({size} bytes)")
+    print(f"  -> Data Hash:  {data_hash_short}")
+    print(f"  -> SVG Hash:   {svg_hash[:8]}")
+    print(f"  -> Build SHA:  {build_sha}")
+    print(f"  -> Synced:     {synced_label}")
     return OUTPUT_PATH
 
 

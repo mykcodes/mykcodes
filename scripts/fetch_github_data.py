@@ -1,18 +1,25 @@
 """
-GitHub Data Fetcher
-====================
+GitHub Data Fetcher — Phase 6
+==============================
 Central data pipeline: fetches GitHub profile data via GraphQL API
 and writes normalized JSON to data/github_profile.json.
 
-Falls back gracefully to mock data if GITHUB_TOKEN is unavailable.
-Preserves the last known data file on API failure.
+Modes:
+  --ci    CI mode. Real API data is mandatory. No mock fallback.
+          Exits non-zero on any failure. Preserves last-known-good files.
+  (none)  Local dev mode. Falls back gracefully if GITHUB_TOKEN is unset.
 
 Usage:
-    python scripts/fetch_github_data.py
+    python scripts/fetch_github_data.py          # local dev
+    python scripts/fetch_github_data.py --ci      # CI / GitHub Actions
 """
 
-import os
+import argparse
+import hashlib
 import json
+import os
+import sys
+import tempfile
 import datetime
 from pathlib import Path
 
@@ -67,18 +74,27 @@ query($login: String!) {
 """
 
 
-def fetch_live_data(username):
+def fetch_live_data(username, ci_mode=False):
     """Fetch real GitHub data via GraphQL API."""
     token = os.environ.get("GITHUB_TOKEN")
     if not token:
-        print("[WARN] GITHUB_TOKEN not set -- using mock data.")
+        if ci_mode:
+            print("[FATAL] GITHUB_TOKEN not set. CI mode requires a valid token.")
+            sys.exit(1)
+        print("[WARN] GITHUB_TOKEN not set — skipping API fetch (local dev mode).")
         return None
 
     if requests is None:
-        print("[WARN] 'requests' not installed -- using mock data.")
+        if ci_mode:
+            print("[FATAL] 'requests' library not installed. CI mode requires it.")
+            sys.exit(1)
+        print("[WARN] 'requests' not installed — skipping API fetch.")
         return None
 
-    headers = {"Authorization": f"bearer {token}"}
+    headers = {
+        "Authorization": f"bearer {token}",
+        "Accept": "application/json",
+    }
 
     try:
         res = requests.post(
@@ -89,6 +105,7 @@ def fetch_live_data(username):
         )
         if res.status_code != 200:
             print(f"[ERROR] GitHub API HTTP {res.status_code}")
+            print(f"        Response: {res.text[:500]}")
             return None
 
         body = res.json()
@@ -96,11 +113,17 @@ def fetch_live_data(username):
             print(f"[ERROR] GraphQL errors: {body['errors']}")
             return None
 
-        return body["data"]["user"]
+        user_data = body.get("data", {}).get("user")
+        if not user_data:
+            print("[ERROR] GraphQL returned no user data.")
+            return None
+
+        return user_data
 
     except Exception as e:
         print(f"[ERROR] Exception during fetch: {e}")
         return None
+
 
 def validate_profile_data(profile):
     """Strictly validate normalized GitHub data before saving."""
@@ -110,19 +133,22 @@ def validate_profile_data(profile):
         raise ValueError(f"Invalid total_contributions: {profile.get('total_contributions')}")
     if not isinstance(profile.get("repositories"), int) or profile["repositories"] < 0:
         raise ValueError(f"Invalid repositories count: {profile.get('repositories')}")
-    if not isinstance(profile.get("weekly_activity"), list):
-        raise ValueError("weekly_activity is not a list")
+    if not isinstance(profile.get("weekly_activity"), list) or len(profile["weekly_activity"]) == 0:
+        raise ValueError("weekly_activity is empty or not a list")
     if not isinstance(profile.get("languages"), list):
         raise ValueError("languages is not a list")
-    
+
     # Check calendar structure basic validity
     for week in profile["weekly_activity"]:
-        if "contributions" not in week:
-            raise ValueError("Malformed weekly_activity data")
-            
-    print("[OK] Data validation passed.")
-    return True
+        if "contributions" not in week or "week_start" not in week:
+            raise ValueError("Malformed weekly_activity entry")
 
+    # Verify dates are present and parseable
+    latest_date = profile["weekly_activity"][-1].get("week_start", "")
+    if not latest_date or len(latest_date) < 10:
+        raise ValueError(f"Latest week_start is missing or malformed: '{latest_date}'")
+
+    return True
 
 
 def compute_streaks(days):
@@ -190,12 +216,20 @@ def normalize(username, user_data):
     total_stars = sum(r["stargazers"]["totalCount"] for r in repos)
     total_forks = sum(r.get("forkCount", 0) for r in repos)
 
+    # Find latest contribution date
+    latest_date = ""
+    for day in reversed(days):
+        if day["contributionCount"] > 0:
+            latest_date = day["date"]
+            break
+
     return {
         "username": username,
-        "generated_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "total_contributions": calendar["totalContributions"],
         "current_streak": current_streak,
         "longest_streak": longest_streak,
+        "latest_contribution_date": latest_date,
         "repositories": user_data["repositories"]["totalCount"],
         "stars": total_stars,
         "forks": total_forks,
@@ -207,41 +241,107 @@ def normalize(username, user_data):
     }
 
 
+def compute_data_hash(profile_dict):
+    """Compute deterministic SHA256 hash of normalized profile data."""
+    canonical = json.dumps(profile_dict, sort_keys=True, ensure_ascii=True)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
 def main():
+    parser = argparse.ArgumentParser(description="Fetch GitHub profile data")
+    parser.add_argument("--ci", action="store_true", help="CI mode: require real API data, fail on error")
+    parser.add_argument("--debug", action="store_true", help="Print detailed diagnostic info")
+    args = parser.parse_args()
+
+    ci_mode = args.ci or os.environ.get("GITHUB_ACTIONS") == "true"
+
     config = load_config()
     username = config["identity"]["username"]
 
     print("=" * 48)
     print(f"  Fetching GitHub data for: {username}")
+    print(f"  Mode: {'CI' if ci_mode else 'LOCAL DEV'}")
     print("=" * 48)
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    user_data = fetch_live_data(username)
+    user_data = fetch_live_data(username, ci_mode=ci_mode)
 
     if not user_data:
-        print("[ERROR] Failed to fetch live data.")
-        if DATA_PATH.exists():
-            print("[INFO] Preserving existing data file.")
-        return DATA_PATH
-        
+        print("[ERROR] Failed to fetch live data from GitHub API.")
+        if ci_mode:
+            print("[FATAL] CI mode — cannot proceed without live data.")
+            if DATA_PATH.exists():
+                print("[INFO] Last-known-good data file preserved (NOT overwritten).")
+            sys.exit(1)
+        else:
+            if DATA_PATH.exists():
+                print("[INFO] Preserving existing data file (local dev mode).")
+            return
+
     try:
         profile = normalize(username, user_data)
         validate_profile_data(profile)
+        print("[OK] Data validation passed.")
     except Exception as e:
-        print(f"[ERROR] Data validation failed: {e}")
-        if DATA_PATH.exists():
-            print("[INFO] Preserving existing data file due to validation failure.")
-        return DATA_PATH
+        print(f"[ERROR] Data normalization/validation failed: {e}")
+        if ci_mode:
+            print("[FATAL] CI mode — invalid data. Preserving last-known-good.")
+            sys.exit(1)
+        else:
+            if DATA_PATH.exists():
+                print("[INFO] Preserving existing data file.")
+            return
 
-    DATA_PATH.write_text(json.dumps(profile, indent=2, ensure_ascii=False), encoding="utf-8")
+    data_hash = compute_data_hash(profile)
+
+    # Atomic write: write to temp file, then move
+    try:
+        tmp_fd, tmp_path = tempfile.mkstemp(suffix=".json", dir=str(DATA_DIR))
+        with os.fdopen(tmp_fd, "w", encoding="utf-8") as tmp_f:
+            json.dump(profile, tmp_f, indent=2, ensure_ascii=False)
+
+        # Validate the temp file is valid JSON
+        with open(tmp_path, "r", encoding="utf-8") as check_f:
+            json.load(check_f)
+
+        # Atomic replace
+        tmp_path_obj = Path(tmp_path)
+        tmp_path_obj.replace(DATA_PATH)
+    except Exception as e:
+        print(f"[ERROR] Atomic write failed: {e}")
+        if ci_mode:
+            sys.exit(1)
+        return
+
     print(f"[OK] Data written: {DATA_PATH}")
     print(f"  -> Contributions: {profile['total_contributions']}")
-    print(f"  -> Repos: {profile['repositories']}")
-    print(f"  -> Stars: {profile['stars']}")
-    print(f"  -> Languages: {len(profile['languages'])}")
+    print(f"  -> Repos:         {profile['repositories']}")
+    print(f"  -> Stars:         {profile['stars']}")
+    print(f"  -> Streak:        {profile['current_streak']}d (longest: {profile['longest_streak']}d)")
+    print(f"  -> Languages:     {len(profile['languages'])}")
+    print(f"  -> Latest Date:   {profile.get('latest_contribution_date', 'N/A')}")
+    print(f"  -> Data Hash:     {data_hash[:8]}")
+    print(f"  -> Generated At:  {profile['generated_at']}")
 
-    return DATA_PATH
+    if args.debug:
+        print()
+        print("=" * 48)
+        print("  DEBUG DIAGNOSTICS")
+        print("=" * 48)
+        print(f"  USERNAME:               {profile['username']}")
+        print(f"  FETCH TIME:             {profile['generated_at']}")
+        print(f"  TOTAL CONTRIBUTIONS:    {profile['total_contributions']}")
+        print(f"  LATEST CONTRIBUTION:    {profile.get('latest_contribution_date', 'N/A')}")
+        print(f"  CURRENT STREAK:         {profile['current_streak']}d")
+        print(f"  LONGEST STREAK:         {profile['longest_streak']}d")
+        print(f"  REPOSITORIES:           {profile['repositories']}")
+        print(f"  STARS:                  {profile['stars']}")
+        print(f"  FOLLOWERS:              {profile['followers']}")
+        print(f"  LANGUAGES:              {len(profile['languages'])}")
+        print(f"  WEEKLY ACTIVITY WEEKS:  {len(profile['weekly_activity'])}")
+        print(f"  DATA HASH (full):       {data_hash}")
+        print(f"  DATA HASH (short):      {data_hash[:8]}")
 
 
 if __name__ == "__main__":

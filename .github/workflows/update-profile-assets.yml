@@ -2,12 +2,17 @@ name: Update Profile Data & Assets
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "3,18,33,48 * * * *"
   workflow_dispatch:
+    inputs:
+      debug:
+        description: "Enable debug diagnostics"
+        required: false
+        default: "false"
+        type: boolean
   push:
     branches:
       - main
-      - master
 
 jobs:
   build:
@@ -16,9 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
+    # Prevent infinite loops: skip runs triggered by the bot's own commits
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -30,10 +40,27 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Fetch GitHub data
-        run: python scripts/fetch_github_data.py
+      - name: Fetch GitHub data (CI mode)
+        run: |
+          ARGS="--ci"
+          if [ "${{ github.event.inputs.debug }}" = "true" ]; then
+            ARGS="$ARGS --debug"
+          fi
+          python scripts/fetch_github_data.py $ARGS
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compute data hash
+        id: hashes
+        run: |
+          DATA_HASH=$(python -c "
+          import hashlib, json
+          d = json.load(open('data/github_profile.json'))
+          c = json.dumps(d, sort_keys=True, ensure_ascii=True)
+          print(hashlib.sha256(c.encode()).hexdigest()[:8])
+          ")
+          echo "data_hash=$DATA_HASH" >> $GITHUB_OUTPUT
+          echo "Data hash: $DATA_HASH"
 
       - name: Generate GitHub Dashboard
         run: python scripts/generate_github_dashboard.py
@@ -47,10 +74,104 @@ jobs:
       - name: Validate
         run: python scripts/validate.py
 
+      - name: Update README cache version
+        run: |
+          python -c "
+          import hashlib, json, re
+          from pathlib import Path
+
+          data = json.load(open('data/github_profile.json'))
+          canonical = json.dumps(data, sort_keys=True, ensure_ascii=True)
+          data_hash = hashlib.sha256(canonical.encode()).hexdigest()[:8]
+
+          readme = Path('README.md')
+          text = readme.read_text()
+          pattern = r'(github-dashboard\.svg)(\?v=[a-f0-9]+)?'
+          new_text = re.sub(pattern, rf'\1?v={data_hash}', text)
+
+          if new_text != text:
+              readme.write_text(new_text)
+              print(f'[OK] README cache version updated: ?v={data_hash}')
+          else:
+              print(f'[INFO] README cache version unchanged: ?v={data_hash}')
+          "
+
+      - name: Compute SVG hash
+        id: svg_hash
+        run: |
+          SVG_HASH=$(python -c "
+          import hashlib
+          h = hashlib.sha256(open('assets/generated/github-dashboard.svg','rb').read()).hexdigest()[:8]
+          print(h)
+          ")
+          echo "svg_hash=$SVG_HASH" >> $GITHUB_OUTPUT
+          echo "SVG hash: $SVG_HASH"
+
+      - name: Git diff check
+        run: |
+          echo "=== Git Status ==="
+          git status --short
+          echo ""
+          echo "=== Changed files ==="
+          git diff --name-only
+
       - name: Commit and Push
+        id: commit
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ assets/generated/ assets/projects/
-          git diff --quiet --cached || git commit -m "chore: update profile data & assets [skip ci]"
-          git push
+          git add data/ assets/generated/ assets/projects/ README.md
+          if git diff --quiet --cached; then
+            echo "No changes to commit."
+            echo "committed=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "chore: sync profile data & assets [skip ci]"
+            git push
+            COMMIT_SHA=$(git rev-parse HEAD)
+            echo "committed=true" >> $GITHUB_OUTPUT
+            echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
+            echo "Pushed commit: $COMMIT_SHA"
+          fi
+
+      - name: Verify remote deployment
+        if: steps.commit.outputs.committed == 'true'
+        run: |
+          python scripts/verify_remote.py \
+            --data-hash "${{ steps.hashes.outputs.data_hash }}" \
+            --commit-sha "${{ steps.commit.outputs.commit_sha }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Debug diagnostics
+        if: github.event.inputs.debug == 'true'
+        run: |
+          echo "================================================"
+          echo "  DEBUG DIAGNOSTICS"
+          echo "================================================"
+          echo "  DATA HASH:       ${{ steps.hashes.outputs.data_hash }}"
+          echo "  SVG HASH:        ${{ steps.svg_hash.outputs.svg_hash }}"
+          echo "  COMMITTED:       ${{ steps.commit.outputs.committed }}"
+          echo "  COMMIT SHA:      ${{ steps.commit.outputs.commit_sha }}"
+          echo ""
+          echo "=== JSON contents (summary) ==="
+          python -c "
+          import json
+          d = json.load(open('data/github_profile.json'))
+          print(f\"  USERNAME:            {d.get('username')}\")
+          print(f\"  GENERATED AT:        {d.get('generated_at')}\")
+          print(f\"  TOTAL CONTRIBUTIONS: {d.get('total_contributions')}\")
+          print(f\"  LATEST CONTRIBUTION: {d.get('latest_contribution_date', 'N/A')}\")
+          print(f\"  CURRENT STREAK:      {d.get('current_streak')}d\")
+          print(f\"  LONGEST STREAK:      {d.get('longest_streak')}d\")
+          print(f\"  REPOSITORIES:        {d.get('repositories')}\")
+          print(f\"  STARS:               {d.get('stars')}\")
+          print(f\"  FOLLOWERS:           {d.get('followers')}\")
+          print(f\"  LANGUAGES:           {len(d.get('languages', []))}\")
+          print(f\"  WEEKLY WEEKS:        {len(d.get('weekly_activity', []))}\")
+          "
+          echo ""
+          echo "=== SVG metadata ==="
+          head -10 assets/generated/github-dashboard.svg
+          echo ""
+          echo "=== README dashboard reference ==="
+          grep -n "github-dashboard" README.md || echo "(not found)"

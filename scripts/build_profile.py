@@ -1,23 +1,29 @@
 """
-Profile Builder
-===============
+Profile Builder — Phase 6
+===========================
 Orchestrates the complete build pipeline:
-1. Fetch GitHub data (or use mock)
+1. Fetch GitHub data
 2. Generate portrait animation (if source images exist)
 3. Generate SVG assets (hero, stack, project cards, buttons)
-4. Generate GitHub dashboard
+4. Generate GitHub dashboard (with freshness + hash metadata)
 5. Generate language visualization
 6. Validate all references
+7. Update README cache-busting version (deterministic, data-hash based)
 
 Run: python scripts/build_profile.py
 """
 
+import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "config" / "profile.json"
+DATA_PATH = ROOT / "data" / "github_profile.json"
+README_PATH = ROOT / "README.md"
+DASHBOARD_PATH = ROOT / "assets" / "generated" / "github-dashboard.svg"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 
@@ -25,6 +31,52 @@ sys.path.insert(0, str(ROOT / "scripts"))
 def load_config():
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def compute_data_hash():
+    """Compute deterministic SHA256 hash of normalized profile data."""
+    content = DATA_PATH.read_text(encoding="utf-8")
+    data = json.loads(content)
+    canonical = json.dumps(data, sort_keys=True, ensure_ascii=True)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def compute_svg_hash():
+    """Compute SHA256 hash of the generated dashboard SVG."""
+    content = DASHBOARD_PATH.read_bytes()
+    return hashlib.sha256(content).hexdigest()
+
+
+def update_readme_cache_version(data_hash_short):
+    """Update README.md dashboard image reference with cache-busting version.
+
+    Uses the data hash (not timestamp) so:
+    - same data = same version = no commit churn
+    - new data  = new version  = forces GitHub CDN refresh
+    """
+    if not README_PATH.exists():
+        print("[WARN] README.md not found — skipping cache-bust update.")
+        return False
+
+    readme_text = README_PATH.read_text(encoding="utf-8")
+
+    # Match: github-dashboard.svg or github-dashboard.svg?v=ANYTHING
+    pattern = r'(github-dashboard\.svg)(\?v=[a-f0-9]+)?'
+    replacement = rf'\1?v={data_hash_short}'
+
+    new_text, count = re.subn(pattern, replacement, readme_text)
+
+    if count == 0:
+        print("[WARN] No github-dashboard.svg reference found in README.md.")
+        return False
+
+    if new_text == readme_text:
+        print("[INFO] README cache version unchanged (data hash identical).")
+        return False
+
+    README_PATH.write_text(new_text, encoding="utf-8")
+    print(f"[OK] README cache version updated: ?v={data_hash_short}")
+    return True
 
 
 def validate():
@@ -61,29 +113,36 @@ def validate():
             errors.append(f"Missing project card: assets/projects/{proj['id']}.svg")
 
     # Data file
-    data_path = ROOT / "data" / "github_profile.json"
-    if not data_path.exists():
+    if not DATA_PATH.exists():
         warnings.append("data/github_profile.json not found — run fetch_github_data.py")
     else:
         try:
-            data = json.loads(data_path.read_text(encoding="utf-8"))
+            data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
             if "username" not in data:
                 warnings.append("data/github_profile.json missing 'username'")
         except json.JSONDecodeError:
             errors.append("data/github_profile.json is invalid JSON")
 
+    # Dashboard SVG metadata validation
+    if DASHBOARD_PATH.exists():
+        svg_text = DASHBOARD_PATH.read_text(encoding="utf-8")
+        if "data-hash" not in svg_text:
+            warnings.append("Dashboard SVG missing data-hash attribute")
+        if "SYNCED" not in svg_text:
+            warnings.append("Dashboard SVG missing SYNCED freshness marker")
+
     # README checks
-    readme = ROOT / "README.md"
-    if readme.exists():
-        text = readme.read_text(encoding="utf-8")
-        # Check for merge conflict markers
+    if README_PATH.exists():
+        text = README_PATH.read_text(encoding="utf-8")
         if "<<<<<<" in text or ">>>>>>>" in text:
             errors.append("README.md contains merge conflict markers")
-        # Check for old external widgets
         if "github-readme-stats" in text:
             warnings.append("README.md still references github-readme-stats external widget")
         if "streak-stats.demolab.com" in text:
             warnings.append("README.md still references streak-stats external widget")
+        # Check cache-busting is present
+        if "github-dashboard.svg?v=" not in text:
+            warnings.append("README.md dashboard reference missing cache-busting ?v= parameter")
 
     # YAML syntax check
     for yml in (ROOT / ".github" / "workflows").glob("*.yml"):
@@ -117,21 +176,24 @@ def validate():
 
 def main():
     print()
-    print("  MAYANK.SYSTEM -- Profile Builder v2")
+    print("  MAYANK.SYSTEM -- Profile Builder v3")
     print("  " + "-" * 38)
     print()
 
     # Step 1: Fetch GitHub data
-    print("[1/6] Fetching GitHub data...")
+    print("[1/7] Fetching GitHub data...")
     try:
         from fetch_github_data import main as fetch_data
         fetch_data()
+    except SystemExit:
+        print("  [WARN] Data fetch exited (expected in local dev without token).")
+        print("  Continuing with existing data if available...")
     except Exception as e:
         print(f"  [WARN] Data fetch failed: {e}")
         print("  Continuing with existing data if available...")
 
-    # Step 2: Portrait (Generate first so it can be embedded in hero SVG)
-    print("\n[2/6] Portrait animation...")
+    # Step 2: Portrait
+    print("\n[2/7] Portrait animation...")
     portrait_src = ROOT / "assets" / "source" / "portrait.png"
     logo_src = ROOT / "assets" / "source" / "logo.png"
 
@@ -143,21 +205,21 @@ def main():
         print("       No source images. Skipping.")
         print(f"       Place images in: assets/source/")
 
-    # Step 3: Generate SVG assets (hero, stack, projects, buttons, headers)
-    print("\n[3/6] Generating SVG assets...")
+    # Step 3: Generate SVG assets
+    print("\n[3/7] Generating SVG assets...")
     from generate_assets import generate_all
     generate_all()
 
     # Step 4: Generate GitHub Dashboard
-    print("\n[4/6] Generating GitHub Dashboard...")
+    print("\n[4/7] Generating GitHub Dashboard...")
     try:
         from generate_github_dashboard import generate_dashboard
         generate_dashboard()
     except Exception as e:
-        print(f"  [WARN] Dashboard generation failed: {e}")
+        print(f"  [ERROR] Dashboard generation failed: {e}")
 
     # Step 5: Generate Language Visualization
-    print("\n[5/6] Generating Language Visualization...")
+    print("\n[5/7] Generating Language Visualization...")
     try:
         from generate_languages import generate_languages
         generate_languages()
@@ -167,48 +229,26 @@ def main():
     # Step 6: Validate
     print("\n[6/7] Validating...")
     validate()
-    
-    # Step 7: Dynamic Data Test (Part K)
-    print("\n[7/7] Running Dynamic Data Change Test...")
-    import shutil
-    import subprocess
-    data_path = ROOT / "data" / "github_profile.json"
-    backup_path = ROOT / "data" / "github_profile_backup.json"
-    chart_path = ROOT / "assets" / "generated" / "github-dashboard.svg"
-    chart_backup = ROOT / "assets" / "generated" / "github-dashboard_backup.svg"
-    
-    if data_path.exists() and chart_path.exists():
-        shutil.copy2(data_path, backup_path)
-        shutil.copy2(chart_path, chart_backup)
-        try:
-            # Modify data temporarily
-            with open(data_path, "r", encoding="utf-8") as f:
-                test_data = json.load(f)
-            # Dramatically alter the activity curve to prove dynamic nature
-            if "weekly_activity" in test_data:
-                for i in range(len(test_data["weekly_activity"])):
-                    test_data["weekly_activity"][i]["contributions"] = 100 if i % 2 == 0 else 0
-            with open(data_path, "w", encoding="utf-8") as f:
-                json.dump(test_data, f)
-                
-            # Regenerate chart
-            from generate_github_dashboard import generate_dashboard
-            generate_dashboard()
-            
-            # Compare output sizes or hashes to prove it changed
-            if chart_path.stat().st_size != chart_backup.stat().st_size:
-                print("  [OK] Dynamic Data Change Test Passed: SVG geometry successfully altered when underlying dataset changes.")
-            else:
-                print("  [ERROR] SVG did not appear to change when data changed.")
-        finally:
-            # Restore
-            shutil.copy2(backup_path, data_path)
-            shutil.copy2(chart_backup, chart_path)
-            backup_path.unlink()
-            chart_backup.unlink()
+
+    # Step 7: Update README cache-busting version
+    print("\n[7/7] Updating README cache version...")
+    if DATA_PATH.exists() and DASHBOARD_PATH.exists():
+        data_hash = compute_data_hash()
+        svg_hash = compute_svg_hash()
+        data_hash_short = data_hash[:8]
+
+        print(f"  Data Hash:  {data_hash_short}")
+        print(f"  SVG Hash:   {svg_hash[:8]}")
+
+        updated = update_readme_cache_version(data_hash_short)
+        if updated:
+            print("  README.md updated with new cache version.")
+        else:
+            print("  README.md cache version unchanged.")
+    else:
+        print("  [SKIP] Data or dashboard not available.")
 
     print("\n  Build complete.\n")
-
 
 
 if __name__ == "__main__":

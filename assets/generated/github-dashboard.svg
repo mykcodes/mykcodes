@@ -1,4 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380"
+     data-version="2026-08-30T19:20:45.204992Z"
+     data-hash="c203e23e"
+     data-build="fab1793">
+  <metadata>
+    <generated_at>2026-08-30T19:20:45.204992Z</generated_at>
+    <data_hash>c203e23eec18de09479746a86f3e5dafaaf9430bc99145f728a4c3525d570eb2</data_hash>
+    <data_hash_short>c203e23e</data_hash_short>
+    <build_sha>fab1793</build_sha>
+    <synced>31 AUG 2026 · 17:13 UTC</synced>
+  </metadata>
   <defs>
     <linearGradient id="dash-bg" x1="0" y1="0" x2="880" y2="380">
       <stop offset="0%" stop-color="#161B22"/>
@@ -36,7 +46,7 @@
 
   <!-- Header -->
   <text x="24" y="28" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="2">GITHUB.ACTIVITY</text>
-  <text x="185" y="28" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="1" opacity="0.35">— a year of building</text>
+  <text x="185" y="28" fill="#484F58" font-family="'SF Mono',monospace" font-size="9" letter-spacing="1" opacity="0.35">— auto-synced github data</text>
   <circle cx="856" cy="22" r="3" fill="#27C93F" opacity="0.7"/>
   <text x="844" y="26" text-anchor="end" fill="#27C93F" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="1" opacity="0.7">LIVE</text>
 
@@ -134,7 +144,10 @@
   <!-- Chart frame accent -->
   <line x1="56" y1="160" x2="56" y2="320" stroke="#21262D" stroke-width="0.4" opacity="0.3"/>
 
-  <!-- Footer micro-label -->
-  <text x="440.0" y="364" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="2" opacity="0.25">BUILD · COMMIT · REPEAT</text>
+  <!-- Freshness marker -->
+  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 31 AUG 2026 · 17:13 UTC</text>
+
+  <!-- Sync commit marker -->
+  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA c203e23e · BUILD fab1793</text>
 
 </svg>
