@@ -465,12 +465,28 @@ def generate_profile_views(config):
     d = config["design"]
     username = config["identity"]["username"]
     
+    import urllib.request
+    import re
+    
+    views_count = "..."
+    try:
+        url = f"https://komarev.com/ghpvc/?username={username}&style=flat-square&color=161B22&label="
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=10) as response:
+            svg_data = response.read().decode('utf-8')
+            # Extract number from the SVG text.
+            texts = re.findall(r'>([0-9,]+)</text>', svg_data)
+            if texts:
+                views_count = texts[-1]
+    except Exception as e:
+        print(f"  [WARN] Failed to fetch profile views: {e}")
+        
     vw, vh = 280, 36
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{vw}" height="{vh}" viewBox="0 0 {vw} {vh}">
   <rect width="{vw}" height="{vh}" rx="4" fill="{d['bg_secondary']}" stroke="{d['border_subtle']}" stroke-width="0.4"/>
   <circle cx="14" cy="{vh // 2}" r="3" fill="#27C93F" opacity="0.5"/>
   <text x="24" y="{vh // 2 + 4}" fill="{d['text_muted']}" font-family="'SF Mono',monospace" font-size="8.5" letter-spacing="1">PROFILE.VIEWS</text>
-  <image href="https://komarev.com/ghpvc/?username={username}&amp;style=flat-square&amp;color=161B22&amp;label=" x="128" y="6" width="140" height="24"/>
+  <text x="{vw - 14}" y="{vh // 2 + 4.5}" text-anchor="end" fill="{d['text_primary']}" font-family="'Inter','Segoe UI',sans-serif" font-size="12" font-weight="600">{views_count}</text>
 </svg>'''
     (GEN_DIR / "profile-views.svg").write_text(svg, encoding="utf-8")
     print(f"[OK] Profile views SVG: assets/generated/profile-views.svg")

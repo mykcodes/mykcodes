@@ -102,6 +102,28 @@ def fetch_live_data(username):
         print(f"[ERROR] Exception during fetch: {e}")
         return None
 
+def validate_profile_data(profile):
+    """Strictly validate normalized GitHub data before saving."""
+    if not profile.get("username"):
+        raise ValueError("Username is empty or missing")
+    if not isinstance(profile.get("total_contributions"), int) or profile["total_contributions"] < 0:
+        raise ValueError(f"Invalid total_contributions: {profile.get('total_contributions')}")
+    if not isinstance(profile.get("repositories"), int) or profile["repositories"] < 0:
+        raise ValueError(f"Invalid repositories count: {profile.get('repositories')}")
+    if not isinstance(profile.get("weekly_activity"), list):
+        raise ValueError("weekly_activity is not a list")
+    if not isinstance(profile.get("languages"), list):
+        raise ValueError("languages is not a list")
+    
+    # Check calendar structure basic validity
+    for week in profile["weekly_activity"]:
+        if "contributions" not in week:
+            raise ValueError("Malformed weekly_activity data")
+            
+    print("[OK] Data validation passed.")
+    return True
+
+
 
 def compute_streaks(days):
     """Calculate current and longest contribution streaks."""
@@ -185,43 +207,6 @@ def normalize(username, user_data):
     }
 
 
-def get_mock_data(username):
-    """Generate realistic mock data for local development."""
-    import math
-
-    # Generate a plausible weekly activity curve
-    weekly = []
-    for i in range(52):
-        # Simulate natural contribution rhythm
-        base = 8 + 6 * math.sin(i * 0.12) + 4 * math.cos(i * 0.25)
-        val = max(0, int(base + (i % 7) * 0.5))
-        weekly.append({"week_start": f"2025-{1 + (i // 4) % 12:02d}-{1 + (i % 4) * 7:02d}", "contributions": val})
-
-    return {
-        "username": username,
-        "generated_at": datetime.datetime.utcnow().isoformat() + "Z",
-        "total_contributions": sum(w["contributions"] for w in weekly),
-        "current_streak": 12,
-        "longest_streak": 45,
-        "repositories": 34,
-        "stars": 128,
-        "forks": 18,
-        "followers": 89,
-        "pull_requests": 56,
-        "issues": 24,
-        "weekly_activity": weekly,
-        "languages": [
-            {"name": "Python", "color": "#3572A5", "percent": 42.1},
-            {"name": "TypeScript", "color": "#3178C6", "percent": 22.8},
-            {"name": "C++", "color": "#f34b7d", "percent": 14.5},
-            {"name": "Dart", "color": "#00B4AB", "percent": 9.2},
-            {"name": "JavaScript", "color": "#f1e05a", "percent": 6.1},
-            {"name": "HTML", "color": "#e34c26", "percent": 3.4},
-            {"name": "CSS", "color": "#563d7c", "percent": 1.9},
-        ],
-    }
-
-
 def main():
     config = load_config()
     username = config["identity"]["username"]
@@ -234,22 +219,20 @@ def main():
 
     user_data = fetch_live_data(username)
 
-    if user_data:
-        profile = normalize(username, user_data)
-        print("[OK] Live GitHub data fetched successfully.")
-    else:
-        # Check if we have a cached version
+    if not user_data:
+        print("[ERROR] Failed to fetch live data.")
         if DATA_PATH.exists():
-            print("[INFO] Retaining last known data file.")
-            try:
-                existing = json.loads(DATA_PATH.read_text(encoding="utf-8"))
-                print(f"  -> Last generated: {existing.get('generated_at', 'unknown')}")
-                return DATA_PATH
-            except Exception:
-                pass
-
-        print("[INFO] Using mock data for local development.")
-        profile = get_mock_data(username)
+            print("[INFO] Preserving existing data file.")
+        return DATA_PATH
+        
+    try:
+        profile = normalize(username, user_data)
+        validate_profile_data(profile)
+    except Exception as e:
+        print(f"[ERROR] Data validation failed: {e}")
+        if DATA_PATH.exists():
+            print("[INFO] Preserving existing data file due to validation failure.")
+        return DATA_PATH
 
     DATA_PATH.write_text(json.dumps(profile, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[OK] Data written: {DATA_PATH}")

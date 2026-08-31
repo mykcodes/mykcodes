@@ -2,8 +2,12 @@ name: Update Profile Data & Assets
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
 
 jobs:
   build:

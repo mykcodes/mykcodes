@@ -165,10 +165,50 @@ def main():
         print(f"  [WARN] Language generation failed: {e}")
 
     # Step 6: Validate
-    print("\n[6/6] Validating...")
+    print("\n[6/7] Validating...")
     validate()
+    
+    # Step 7: Dynamic Data Test (Part K)
+    print("\n[7/7] Running Dynamic Data Change Test...")
+    import shutil
+    import subprocess
+    data_path = ROOT / "data" / "github_profile.json"
+    backup_path = ROOT / "data" / "github_profile_backup.json"
+    chart_path = ROOT / "assets" / "generated" / "github-dashboard.svg"
+    chart_backup = ROOT / "assets" / "generated" / "github-dashboard_backup.svg"
+    
+    if data_path.exists() and chart_path.exists():
+        shutil.copy2(data_path, backup_path)
+        shutil.copy2(chart_path, chart_backup)
+        try:
+            # Modify data temporarily
+            with open(data_path, "r", encoding="utf-8") as f:
+                test_data = json.load(f)
+            # Dramatically alter the activity curve to prove dynamic nature
+            if "weekly_activity" in test_data:
+                for i in range(len(test_data["weekly_activity"])):
+                    test_data["weekly_activity"][i]["contributions"] = 100 if i % 2 == 0 else 0
+            with open(data_path, "w", encoding="utf-8") as f:
+                json.dump(test_data, f)
+                
+            # Regenerate chart
+            from generate_github_dashboard import generate_dashboard
+            generate_dashboard()
+            
+            # Compare output sizes or hashes to prove it changed
+            if chart_path.stat().st_size != chart_backup.stat().st_size:
+                print("  [OK] Dynamic Data Change Test Passed: SVG geometry successfully altered when underlying dataset changes.")
+            else:
+                print("  [ERROR] SVG did not appear to change when data changed.")
+        finally:
+            # Restore
+            shutil.copy2(backup_path, data_path)
+            shutil.copy2(chart_backup, chart_path)
+            backup_path.unlink()
+            chart_backup.unlink()
 
     print("\n  Build complete.\n")
+
 
 
 if __name__ == "__main__":
