@@ -316,10 +316,11 @@ def main():
 
     try:
         print("[INFO] Normalizing API response...")
-        profile = normalize(username, raw_data)
+        profile = normalize(username, user_data)
         
         if not profile["stars_available"]:
             print("[INFO] STARS SOURCE: Attempting REST fallback for stars.")
+            token = os.environ.get("GITHUB_TOKEN")
             rest_stars = fetch_stars_rest(username, token)
             if rest_stars is not None:
                 profile["stars"] = rest_stars
