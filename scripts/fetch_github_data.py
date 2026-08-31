@@ -45,7 +45,7 @@ query($login: String!) {
     repositories(first: 100, ownerAffiliations: OWNER, isFork: false, orderBy: {field: STARGAZERS, direction: DESC}) {
       totalCount
       nodes {
-        stargazers { totalCount }
+        stargazerCount
         forkCount
         languages(first: 5, orderBy: {field: SIZE, direction: DESC}) {
           edges {
@@ -110,8 +110,9 @@ def fetch_live_data(username, ci_mode=False):
 
         body = res.json()
         if "errors" in body:
-            print(f"[ERROR] GraphQL errors: {body['errors']}")
-            return None
+            print(f"[WARN] GraphQL errors returned: {body['errors']}")
+            # Proceed to check if partial data is available
+
 
         user_data = body.get("data", {}).get("user")
         if not user_data:
@@ -122,6 +123,25 @@ def fetch_live_data(username, ci_mode=False):
 
     except Exception as e:
         print(f"[ERROR] Exception during fetch: {e}")
+        return None
+
+
+def fetch_stars_rest(username, token):
+    """Fallback REST API call to fetch aggregate star count if GraphQL fails due to permissions."""
+    url = f"https://api.github.com/users/{username}/repos?per_page=100"
+    headers = {}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    
+    try:
+        res = requests.get(url, headers=headers, timeout=10)
+        res.raise_for_status()
+        repos = res.json()
+        total_stars = sum(r.get("stargazers_count", 0) for r in repos)
+        print(f"[INFO] STARS SOURCE: REST repository count ({total_stars})")
+        return total_stars
+    except Exception as e:
+        print(f"[WARN] STARS SOURCE: unavailable. REST fallback failed: {e}")
         return None
 
 
@@ -213,7 +233,21 @@ def normalize(username, user_data):
     repos = user_data["repositories"]["nodes"]
 
     current_streak, longest_streak = compute_streaks(days)
-    total_stars = sum(r["stargazers"]["totalCount"] for r in repos)
+    
+    stars_available = True
+    total_stars = 0
+    for r in repos:
+        if "stargazerCount" not in r:
+            stars_available = False
+            total_stars = None
+            break
+        total_stars += r.get("stargazerCount", 0)
+        
+    if stars_available:
+        print(f"[INFO] STARS SOURCE: GraphQL stargazerCount ({total_stars})")
+    else:
+        print("[WARN] STARS SOURCE: GraphQL stargazerCount unavailable. Will fallback to REST if possible.")
+
     total_forks = sum(r.get("forkCount", 0) for r in repos)
 
     # Find latest contribution date
@@ -232,6 +266,7 @@ def normalize(username, user_data):
         "latest_contribution_date": latest_date,
         "repositories": user_data["repositories"]["totalCount"],
         "stars": total_stars,
+        "stars_available": True,
         "forks": total_forks,
         "followers": user_data["followers"]["totalCount"],
         "pull_requests": user_data["pullRequests"]["totalCount"],
@@ -280,7 +315,18 @@ def main():
             return
 
     try:
-        profile = normalize(username, user_data)
+        print("[INFO] Normalizing API response...")
+        profile = normalize(username, raw_data)
+        
+        if not profile["stars_available"]:
+            print("[INFO] STARS SOURCE: Attempting REST fallback for stars.")
+            rest_stars = fetch_stars_rest(username, token)
+            if rest_stars is not None:
+                profile["stars"] = rest_stars
+                profile["stars_available"] = True
+            else:
+                profile["stars"] = None
+                profile["stars_available"] = False
         validate_profile_data(profile)
         print("[OK] Data validation passed.")
     except Exception as e:
@@ -317,7 +363,7 @@ def main():
     print(f"[OK] Data written: {DATA_PATH}")
     print(f"  -> Contributions: {profile['total_contributions']}")
     print(f"  -> Repos:         {profile['repositories']}")
-    print(f"  -> Stars:         {profile['stars']}")
+    print(f"  -> Stars:         {profile['stars'] if profile['stars_available'] else 'unavailable'}")
     print(f"  -> Streak:        {profile['current_streak']}d (longest: {profile['longest_streak']}d)")
     print(f"  -> Languages:     {len(profile['languages'])}")
     print(f"  -> Latest Date:   {profile.get('latest_contribution_date', 'N/A')}")
@@ -336,7 +382,7 @@ def main():
         print(f"  CURRENT STREAK:         {profile['current_streak']}d")
         print(f"  LONGEST STREAK:         {profile['longest_streak']}d")
         print(f"  REPOSITORIES:           {profile['repositories']}")
-        print(f"  STARS:                  {profile['stars']}")
+        print(f"  STARS:                  {profile['stars'] if profile['stars_available'] else 'unavailable'}")
         print(f"  FOLLOWERS:              {profile['followers']}")
         print(f"  LANGUAGES:              {len(profile['languages'])}")
         print(f"  WEEKLY ACTIVITY WEEKS:  {len(profile['weekly_activity'])}")

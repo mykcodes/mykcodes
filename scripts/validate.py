@@ -150,7 +150,9 @@ def validate_readme():
     for ref in img_refs:
         if ref.startswith("http"):
             continue
-        path = ROOT / ref
+        # Strip query params like ?v=hash
+        clean_ref = ref.split("?")[0]
+        path = ROOT / clean_ref
         if not path.exists():
             check("errors", f"Broken image ref: {ref}")
         else:

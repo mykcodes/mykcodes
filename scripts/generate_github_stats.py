@@ -37,7 +37,7 @@ def fetch_github_data(username):
         repositories(first: 100, ownerAffiliations: OWNER, isFork: false, orderBy: {field: STARGAZERS, direction: DESC}) {
           totalCount
           nodes {
-            stargazers { totalCount }
+            stargazerCount
             languages(first: 5, orderBy: {field: SIZE, direction: DESC}) {
               edges {
                 size
@@ -105,7 +105,7 @@ def fetch_github_data(username):
                 
         # Calculate stars
         repos = user["repositories"]["nodes"]
-        total_stars = sum(r["stargazers"]["totalCount"] for r in repos)
+        total_stars = sum(r.get("stargazerCount", 0) for r in repos)
         total_repos = user["repositories"]["totalCount"]
         
         # Calculate languages

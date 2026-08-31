@@ -184,7 +184,7 @@ def generate_dashboard():
     metrics = [
         ("CONTRIBUTIONS", fmt_number(data.get("total_contributions", 0)), cyan),
         ("REPOSITORIES", fmt_number(data.get("repositories", 0)), t1),
-        ("STARS", fmt_number(data.get("stars", 0)), t1),
+        ("STARS", fmt_number(data["stars"]) if data.get("stars") is not None else "—", t1),
         ("STREAK", f"{data.get('current_streak', 0)}d", ice),
         ("FOLLOWERS", fmt_number(data.get("followers", 0)), t1),
     ]
