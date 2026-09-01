@@ -3,7 +3,7 @@
 <br/>
 <img src="assets/generated/header-stats.svg" alt="GitHub Statistics — performance overview" width="880"/>
 <br/>
-<img src="assets/generated/github-dashboard.svg?v=c203e23e" alt="GitHub Activity Dashboard — contributions, repos, stars, activity graph" width="880"/>
+<img src="assets/generated/github-dashboard.svg?v=3376f2a9" alt="GitHub Activity Dashboard — contributions, repos, stars, activity graph" width="880"/>
 <br/>
 <img src="assets/generated/header-toolkit.svg" alt="Toolkit Map — active technologies" width="880"/>
 <br/>
@@ -61,15 +61,15 @@
   <img src="assets/generated/btn-portfolio.svg" alt="Open Portfolio" width="880"/>
 </a>
 
-<br/>
+<br/><br/>
 
-<a href="https://linkedin.com/in/mynksharma"><img src="assets/generated/btn-linkedin.svg" alt="LinkedIn" width="180"/></a>
+<a href="https://linkedin.com/in/mynksharma"><img src="assets/generated/btn-linkedin.svg" alt="LinkedIn" width="200"/></a>
 &nbsp;&nbsp;
-<a href="https://instagram.com/mynk_911"><img src="assets/generated/btn-instagram.svg" alt="Instagram" width="180"/></a>
+<a href="https://instagram.com/mynk_911"><img src="assets/generated/btn-instagram.svg" alt="Instagram" width="200"/></a>
 &nbsp;&nbsp;
-<a href="https://facebook.com/mykcodes"><img src="assets/generated/btn-facebook.svg" alt="Facebook" width="180"/></a>
+<a href="https://facebook.com/mykcodes"><img src="assets/generated/btn-facebook.svg" alt="Facebook" width="200"/></a>
 &nbsp;&nbsp;
-<a href="mailto:ffmayank55@gmail.com"><img src="assets/generated/btn-email.svg" alt="Email" width="180"/></a>
+<a href="mailto:ffmayank55@gmail.com"><img src="assets/generated/btn-email.svg" alt="Email" width="200"/></a>
 
 <br/>
 
@@ -77,6 +77,6 @@
 
 <br/>
 
-<img src="assets/generated/profile-views.svg" alt="Profile views" width="280"/>
+![](https://komarev.com/ghpvc/?username=mykcodes&style=flat-square&color=lightgrey)
 
 </div>
