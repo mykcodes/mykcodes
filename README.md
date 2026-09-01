@@ -3,7 +3,7 @@
 <br/>
 <img src="assets/generated/header-stats.svg" alt="GitHub Statistics — performance overview" width="880"/>
 <br/>
-<img src="assets/generated/github-dashboard.svg?v=aec179ae" alt="GitHub Activity Dashboard — contributions, repos, stars, activity graph" width="880"/>
+<img src="assets/generated/github-dashboard.svg?v=6c0e8d8f" alt="GitHub Activity Dashboard — contributions, repos, stars, activity graph" width="880"/>
 <br/>
 <img src="assets/generated/header-toolkit.svg" alt="Toolkit Map — active technologies" width="880"/>
 <br/>
