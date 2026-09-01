@@ -1,25 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380"
-<<<<<<< HEAD
-     data-version="2026-09-01T02:58:24Z"
-     data-hash="aec179ae"
-     data-build="6f25b4a">
+     data-version="2026-09-01T16:36:53Z"
+     data-hash="ac73571a"
+     data-build="da52a37">
   <metadata>
-    <generated_at>2026-09-01T02:58:24Z</generated_at>
-    <data_hash>aec179ae6a0303fb81f2f39b0522ab67dfc864feb59f05e53a67f2479201a3db</data_hash>
-    <data_hash_short>aec179ae</data_hash_short>
-    <build_sha>6f25b4a</build_sha>
-    <synced>01 SEP 2026 · 16:34 UTC</synced>
-=======
-     data-version="2026-09-01T16:31:53Z"
-     data-hash="f3fe0aca"
-     data-build="dfec35d">
-  <metadata>
-    <generated_at>2026-09-01T16:31:53Z</generated_at>
-    <data_hash>f3fe0aca0a73adb12ac748118e8b7656f0630e60099368190e05745c113597d6</data_hash>
-    <data_hash_short>f3fe0aca</data_hash_short>
-    <build_sha>dfec35d</build_sha>
-    <synced>01 SEP 2026 · 16:31 UTC</synced>
->>>>>>> 92823684ac29bf70f9507ca027db74e6fc67265d
+    <generated_at>2026-09-01T16:36:53Z</generated_at>
+    <data_hash>ac73571af606c566861add3c211518246d62b8b594660cacfb84b756ce6e2f9d</data_hash>
+    <data_hash_short>ac73571a</data_hash_short>
+    <build_sha>da52a37</build_sha>
+    <synced>01 SEP 2026 · 16:36 UTC</synced>
   </metadata>
   <defs>
     <linearGradient id="dash-bg" x1="0" y1="0" x2="880" y2="380">
@@ -137,16 +125,9 @@
   <line x1="56" y1="160" x2="56" y2="320" stroke="#21262D" stroke-width="0.4" opacity="0.3"/>
 
   <!-- Freshness marker -->
-<<<<<<< HEAD
-  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 01 SEP 2026 · 16:34 UTC</text>
+  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 01 SEP 2026 · 16:36 UTC</text>
 
   <!-- Sync commit marker -->
-  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA aec179ae · BUILD 6f25b4a</text>
-=======
-  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 01 SEP 2026 · 16:31 UTC</text>
-
-  <!-- Sync commit marker -->
-  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA f3fe0aca · BUILD dfec35d</text>
->>>>>>> 92823684ac29bf70f9507ca027db74e6fc67265d
+  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA ac73571a · BUILD da52a37</text>
 
 </svg>
