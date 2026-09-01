@@ -1,23 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380"
-<<<<<<< HEAD
-     data-version="2026-09-01T01:13:22Z"
-     data-hash="3376f2a9"
-     data-build="5c8560e">
-  <metadata>
-    <generated_at>2026-09-01T01:13:22Z</generated_at>
-    <data_hash>3376f2a97326cf0d63c153c5ac32a9853908c5372430bbe5dbcbc46c714895e6</data_hash>
-    <data_hash_short>3376f2a9</data_hash_short>
-=======
      data-version="2026-09-01T02:58:24Z"
      data-hash="aec179ae"
-     data-build="5c8560e">
+     data-build="6f25b4a">
   <metadata>
     <generated_at>2026-09-01T02:58:24Z</generated_at>
     <data_hash>aec179ae6a0303fb81f2f39b0522ab67dfc864feb59f05e53a67f2479201a3db</data_hash>
     <data_hash_short>aec179ae</data_hash_short>
->>>>>>> 8646a1b6b23d968feccf452a96b363608d4f9027
-    <build_sha>5c8560e</build_sha>
-    <synced>01 SEP 2026 · 02:58 UTC</synced>
+    <build_sha>6f25b4a</build_sha>
+    <synced>01 SEP 2026 · 16:34 UTC</synced>
   </metadata>
   <defs>
     <linearGradient id="dash-bg" x1="0" y1="0" x2="880" y2="380">
@@ -135,13 +125,9 @@
   <line x1="56" y1="160" x2="56" y2="320" stroke="#21262D" stroke-width="0.4" opacity="0.3"/>
 
   <!-- Freshness marker -->
-  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 01 SEP 2026 · 02:58 UTC</text>
+  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 01 SEP 2026 · 16:34 UTC</text>
 
   <!-- Sync commit marker -->
-<<<<<<< HEAD
-  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA 3376f2a9 · BUILD 5c8560e</text>
-=======
-  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA aec179ae · BUILD 5c8560e</text>
->>>>>>> 8646a1b6b23d968feccf452a96b363608d4f9027
+  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA aec179ae · BUILD 6f25b4a</text>
 
 </svg>
