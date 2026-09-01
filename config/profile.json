@@ -2,7 +2,7 @@
   "identity": {
     "name": "Mayank Sharma",
     "username": "mykcodes",
-    "headline": "CSE Student · Builder · UI-Minded Engineer",
+    "headline": "CSE Student · UI/UX · Cloud Security",
     "short_bio": "I build systems that work well and feel right. Interested in the space where engineering meets design — from AI orchestration to interface craft.",
     "location": "India",
     "design_principle": "Quiet execution. Thoughtful systems."
@@ -75,7 +75,7 @@
     "AI & Intelligence": ["LLM Integration", "AI Systems", "Automation"],
     "Cloud & DevOps": ["Git", "GitHub", "Docker", "Linux", "Cloud"],
     "Security": ["Cybersecurity", "Ethical Hacking", "Security Tooling"],
-    "Design": ["Figma", "Interface Design", "Motion Design"]
+    "Design": ["Figma", "Interface Design"]
   },
   "design": {
     "bg_primary": "#0D1117",

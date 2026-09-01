@@ -9,6 +9,7 @@ import os
 import json
 import requests
 import html
+import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -89,6 +90,7 @@ def fetch_github_data(username):
         longest_streak = 0
         temp_streak = 0
         
+        # Historical longest streak
         for day in days:
             if day["contributionCount"] > 0:
                 temp_streak += 1
@@ -96,12 +98,38 @@ def fetch_github_data(username):
             else:
                 temp_streak = 0
                 
-        # Current streak (working backwards)
-        for day in reversed(days):
-            if day["contributionCount"] > 0:
-                current_streak += 1
+        # Current streak logic (provisional today)
+        if days:
+            today_str = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+            days_dict = {day["date"]: day["contributionCount"] for day in days}
+            
+            if today_str not in days_dict:
+                max_date = max(days_dict.keys())
+                if max_date < today_str:
+                    print(f"[WARN] GitHub calendar is stale. Expected today ({today_str}) but ends at {max_date}")
+                    today_str = max_date
+                else:
+                    today_str = max_date
+                    print(f"[WARN] Calendar missing today ({today_str}), using max_date {max_date}")
+            
+            today_count = days_dict[today_str]
+            today_dt = datetime.datetime.strptime(today_str, "%Y-%m-%d")
+            
+            if today_count > 0:
+                streak_end = today_dt
             else:
-                break
+                streak_end = today_dt - datetime.timedelta(days=1)
+                
+            curr_dt = streak_end
+            while True:
+                d_str = curr_dt.strftime("%Y-%m-%d")
+                if d_str not in days_dict:
+                    break
+                if days_dict[d_str] > 0:
+                    current_streak += 1
+                    curr_dt -= datetime.timedelta(days=1)
+                else:
+                    break
                 
         # Calculate stars
         repos = user["repositories"]["nodes"]

@@ -173,10 +173,13 @@ def validate_profile_data(profile):
 
 def compute_streaks(days):
     """Calculate current and longest contribution streaks."""
-    current_streak = 0
+    if not days:
+        return 0, 0
+
     longest_streak = 0
     temp = 0
-
+    
+    # Longest streak - historical logic remains unchanged
     for day in days:
         if day["contributionCount"] > 0:
             temp += 1
@@ -184,10 +187,37 @@ def compute_streaks(days):
         else:
             temp = 0
 
-    # Current streak — walk backwards from today
-    for day in reversed(days):
-        if day["contributionCount"] > 0:
+    # Explicitly determine today's date in UTC
+    today_str = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+    days_dict = {day["date"]: day["contributionCount"] for day in days}
+
+    if today_str not in days_dict:
+        max_date = max(days_dict.keys())
+        if max_date < today_str:
+            raise ValueError(f"GitHub calendar is stale. Expected today ({today_str}) but calendar ends at {max_date}")
+        else:
+            raise ValueError(f"GitHub calendar is missing today's date ({today_str})")
+
+    today_count = days_dict[today_str]
+    today_dt = datetime.datetime.strptime(today_str, "%Y-%m-%d")
+
+    # If today's contribution count == 0, calculate streak ending yesterday
+    if today_count > 0:
+        streak_end = today_dt
+    else:
+        streak_end = today_dt - datetime.timedelta(days=1)
+
+    # Current streak — walk backwards explicitly from the computed streak_end
+    current_streak = 0
+    curr_dt = streak_end
+
+    while True:
+        d_str = curr_dt.strftime("%Y-%m-%d")
+        if d_str not in days_dict:
+            break
+        if days_dict[d_str] > 0:
             current_streak += 1
+            curr_dt -= datetime.timedelta(days=1)
         else:
             break
 
