@@ -78,6 +78,4 @@
   <text x="52" y="379" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Figma</text>
   <rect x="96.0" y="367" width="115.2" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
   <text x="104.0" y="379" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Interface Design</text>
-  <rect x="216.2" y="367" width="96.60000000000001" height="17" rx="3" fill="#C792EA" opacity="0.07" stroke="#C792EA" stroke-width="0.4" stroke-opacity="0.2"/>
-  <text x="224.2" y="379" fill="#8B949E" font-family="'SF Mono',monospace" font-size="9">Motion Design</text>
 </svg>
