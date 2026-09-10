@@ -57,7 +57,7 @@
 <img src="assets/generated/header-connect.svg" alt="Connect — reach out" width="880"/>
 <br/>
 
-<a href="https://myk-codes.web.app">
+<a href="https://mykcodes.tech">
   <img src="assets/generated/btn-portfolio.svg" alt="Open Portfolio" width="880"/>
 </a>
 
