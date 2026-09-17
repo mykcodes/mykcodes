@@ -136,12 +136,12 @@ def generate_dashboard():
     chart_w = chart_right - chart_left
     chart_h = chart_bottom - chart_top
 
-    # Weekly activity data
-    weekly = data.get("weekly_activity", [])
-    if not weekly:
-        weekly = [{"week_start": "", "contributions": 0}] * 52
+    # Daily activity data (last 14 days)
+    daily = data.get("daily_activity", [])
+    if not daily:
+        daily = [{"date": "", "contributions": 0}] * 14
 
-    values = [w["contributions"] for w in weekly]
+    values = [d["contributions"] for d in daily]
     max_val = max(values) if values else 1
     if max_val == 0:
         max_val = 1
@@ -165,18 +165,19 @@ def generate_dashboard():
     peak_idx = values.index(max(values))
     peak_x, peak_y = points[peak_idx]
 
-    # Month labels
-    month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    month_labels_svg = ""
-    for i, week in enumerate(weekly):
-        ds = week.get("week_start", "")
-        if ds and len(ds) >= 7:
+    # Day labels
+    day_labels_svg = ""
+    for i, day in enumerate(daily):
+        ds = day.get("date", "")
+        if ds and len(ds) >= 10:
             try:
                 month = int(ds[5:7])
-                day = int(ds[8:10]) if len(ds) >= 10 else 1
-                if day <= 7 and i < n:
-                    x = chart_left + (i / max(n - 1, 1)) * chart_w
-                    month_labels_svg += f'  <text x="{x:.1f}" y="{chart_bottom + 18}" text-anchor="middle" fill="{t3}" font-family="\'SF Mono\',monospace" font-size="8" opacity="0.6">{month_names[month - 1]}</text>\n'
+                day_num = int(ds[8:10])
+                month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                # Plot every day since it's only 14 days
+                x = chart_left + (i / max(n - 1, 1)) * chart_w
+                label = f"{month_names[month - 1]} {day_num}"
+                day_labels_svg += f'  <text x="{x:.1f}" y="{chart_bottom + 18}" text-anchor="middle" fill="{t3}" font-family="\'SF Mono\',monospace" font-size="7.5" opacity="0.6">{label}</text>\n'
             except (ValueError, IndexError):
                 pass
 
@@ -274,8 +275,8 @@ def generate_dashboard():
     svg += f'''
   <!-- Metrics / chart separator -->
   <line x1="24" y1="110" x2="{W - 24}" y2="110" stroke="{border_s}" stroke-width="0.4"/>
-  <text x="24" y="130" fill="{t3}" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="1.5" opacity="0.5">WEEKLY CONTRIBUTION ACTIVITY</text>
-  <text x="{W - 24}" y="130" text-anchor="end" fill="{t3}" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="1" opacity="0.35">52 WEEKS</text>
+  <text x="24" y="130" fill="{t3}" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="1.5" opacity="0.5">DAILY CONTRIBUTION ACTIVITY</text>
+  <text x="{W - 24}" y="130" text-anchor="end" fill="{t3}" font-family="'SF Mono',monospace" font-size="7.5" letter-spacing="1" opacity="0.35">LAST 14 DAYS</text>
 
   <!-- Gridlines -->
 {grid_lines}
@@ -294,8 +295,8 @@ def generate_dashboard():
   <circle cx="{peak_x:.1f}" cy="{peak_y:.1f}" r="1.5" fill="#fff"/>
   <text x="{peak_x:.1f}" y="{peak_y - 10:.1f}" text-anchor="middle" fill="{cyan}" font-family="'SF Mono',monospace" font-size="8" font-weight="600">{max(values)}</text>
 
-  <!-- Month labels -->
-{month_labels_svg}
+  <!-- Day labels -->
+{day_labels_svg}
 
   <!-- Bottom axis line -->
   <line x1="{chart_left}" y1="{chart_bottom}" x2="{chart_right}" y2="{chart_bottom}" stroke="{border_s}" stroke-width="0.4"/>

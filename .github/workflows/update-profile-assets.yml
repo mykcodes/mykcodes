@@ -48,7 +48,7 @@ jobs:
           fi
           python scripts/fetch_github_data.py $ARGS
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Compute data hash
         id: hashes

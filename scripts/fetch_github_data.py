@@ -234,6 +234,15 @@ def compute_weekly_activity(weeks):
     return weekly
 
 
+def compute_daily_activity(days, num_days=14):
+    """Compute daily contributions for the last num_days."""
+    recent_days = days[-num_days:] if len(days) >= num_days else days
+    daily = []
+    for d in recent_days:
+        daily.append({"date": d["date"], "contributions": d["contributionCount"]})
+    return daily
+
+
 def compute_languages(repos):
     """Aggregate language usage across all repos."""
     langs = {}
@@ -302,6 +311,7 @@ def normalize(username, user_data):
         "pull_requests": user_data["pullRequests"]["totalCount"],
         "issues": user_data["issues"]["totalCount"],
         "weekly_activity": compute_weekly_activity(weeks),
+        "daily_activity": compute_daily_activity(days, 14),
         "languages": compute_languages(repos),
     }
 
