@@ -60,14 +60,14 @@ def update_readme_cache_version(data_hash_short):
 
     readme_text = README_PATH.read_text(encoding="utf-8")
 
-    # Match: github-dashboard.svg or github-dashboard.svg?v=ANYTHING
-    pattern = r'(github-dashboard\.svg)(\?v=[a-f0-9]+)?'
+    # Match: specific dynamic svgs with or without ?v=
+    pattern = r'(github-dashboard\.svg|github-languages\.svg|github-snake\.svg|github-snake-dark\.svg)(\?v=[a-f0-9]+)?'
     replacement = rf'\1?v={data_hash_short}'
-
+    
     new_text, count = re.subn(pattern, replacement, readme_text)
-
+    
     if count == 0:
-        print("[WARN] No github-dashboard.svg reference found in README.md.")
+        print("[WARN] No dynamic SVGs found in README.md.")
         return False
 
     if new_text == readme_text:

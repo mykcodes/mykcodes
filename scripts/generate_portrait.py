@@ -61,13 +61,15 @@ def get_portrait_pixels(img_rgb, img_gray, pixel_size, edge_weight, rng):
     flat_y = grid_y.flatten()
     
     # Keep only points inside the mask
-    mask_vals = final_mask[flat_y, flat_x]
+    mask_vals = final_mask[flat_y.astype(int), flat_x.astype(int)]
     
     valid_x = flat_x[mask_vals]
     valid_y = flat_y[mask_vals]
     
     # Quantize colors perceptually
-    quantized_img = img_rgb.quantize(colors=16, method=Image.Quantize.MEDIANCUT).convert("RGB")
+    palette_size = 32 # Default fallback, normally we should pass this or read from config
+    # We will just change hardcoded 16 to 64 for much better color detail
+    quantized_img = img_rgb.quantize(colors=64, method=Image.Quantize.MEDIANCUT).convert("RGB")
     q_arr = np.array(quantized_img)
     
     colors = q_arr[valid_y, valid_x, :]
@@ -239,7 +241,7 @@ def generate_portrait_animation():
         if WW != DW or WH != DH:
             img = img.resize((DW, DH), Image.LANCZOS)
             
-        img_q = img.quantize(colors=128, method=Image.Quantize.MEDIANCUT)
+        img_q = img.quantize(colors=256, method=Image.Quantize.MEDIANCUT) # Increased output colors to 256 for better quality
         frames.append(img_q)
         
         if fi == TOTAL - 1:

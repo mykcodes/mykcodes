@@ -86,7 +86,7 @@ jobs:
 
           readme = Path('README.md')
           text = readme.read_text()
-          pattern = r'(github-dashboard\.svg)(\?v=[a-f0-9]+)?'
+          pattern = r'(github-dashboard\.svg|github-languages\.svg|github-snake\.svg|github-snake-dark\.svg)(\?v=[a-f0-9]+)?'
           new_text = re.sub(pattern, rf'\1?v={data_hash}', text)
 
           if new_text != text:

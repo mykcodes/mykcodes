@@ -7,7 +7,7 @@
 <br/>
 <img src="assets/generated/header-toolkit.svg" alt="Toolkit Map — active technologies" width="880"/>
 <br/>
-<img src="assets/generated/github-languages.svg" alt="Language Distribution — code signal" width="880"/>
+<img src="assets/generated/github-languages.svg?v=8e8626cf" alt="Language Distribution — code signal" width="880"/>
 <br/>
 <img src="assets/generated/stack.svg" alt="Technology stack: Languages, Interface, Backend, AI, Cloud, Security, Design" width="880"/>
 <br/>
@@ -17,9 +17,9 @@
 <br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/generated/github-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="assets/generated/github-snake.svg"/>
-  <img alt="GitHub contribution graph — snake animation" src="assets/generated/github-snake-dark.svg" width="880"/>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/generated/github-snake-dark.svg?v=8e8626cf"/>
+  <source media="(prefers-color-scheme: light)" srcset="assets/generated/github-snake.svg?v=8e8626cf"/>
+  <img alt="GitHub contribution graph — snake animation" src="assets/generated/github-snake-dark.svg?v=8e8626cf" width="880"/>
 </picture>
 
 <br/> 
