@@ -16,14 +16,14 @@
   <!-- Segmented bar -->
   <rect x="24" y="58" width="832" height="12" rx="6" fill="#1C2128"/>
   <g clip-path="url(#bar-clip)">
-  <rect x="24.0" y="58" width="279.6" height="12" fill="#3572A5"/>
-  <rect x="303.6" y="58" width="203.8" height="12" fill="#DA5B0B"/>
-  <rect x="507.4" y="58" width="154.8" height="12" fill="#00B4AB"/>
-  <rect x="662.1" y="58" width="69.1" height="12" fill="#e34c26"/>
-  <rect x="731.2" y="58" width="47.4" height="12" fill="#f1e05a"/>
-  <rect x="778.6" y="58" width="37.4" height="12" fill="#3178c6"/>
+  <rect x="24.0" y="58" width="270.4" height="12" fill="#3572A5"/>
+  <rect x="294.4" y="58" width="197.2" height="12" fill="#DA5B0B"/>
+  <rect x="491.6" y="58" width="149.8" height="12" fill="#00B4AB"/>
+  <rect x="641.3" y="58" width="67.4" height="12" fill="#e34c26"/>
+  <rect x="708.7" y="58" width="61.6" height="12" fill="#3178c6"/>
+  <rect x="770.3" y="58" width="45.8" height="12" fill="#f1e05a"/>
   <rect x="816.1" y="58" width="20.8" height="12" fill="#f34b7d"/>
-  <rect x="836.9" y="58" width="19.1" height="12" fill="#663399"/>
+  <rect x="836.9" y="58" width="20.0" height="12" fill="#663399"/>
   </g>
 
   <!-- Bar border -->
@@ -32,27 +32,27 @@
   <!-- Language list -->
   <circle cx="30.0" cy="101" r="4.5" fill="#3572A5"/>
   <text x="42.0" y="105" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">Python</text>
-  <text x="416.0" y="105" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">33.6%</text>
+  <text x="416.0" y="105" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">32.5%</text>
   <circle cx="30.0" cy="127" r="4.5" fill="#DA5B0B"/>
   <text x="42.0" y="131" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">Jupyter Notebook</text>
-  <text x="416.0" y="131" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">24.5%</text>
+  <text x="416.0" y="131" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">23.7%</text>
   <circle cx="30.0" cy="153" r="4.5" fill="#00B4AB"/>
   <text x="42.0" y="157" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">Dart</text>
-  <text x="416.0" y="157" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">18.6%</text>
+  <text x="416.0" y="157" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">18.0%</text>
   <circle cx="30.0" cy="179" r="4.5" fill="#e34c26"/>
   <text x="42.0" y="183" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">HTML</text>
-  <text x="416.0" y="183" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">8.3%</text>
-  <circle cx="446.0" cy="101" r="4.5" fill="#f1e05a"/>
-  <text x="458.0" y="105" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">JavaScript</text>
-  <text x="832.0" y="105" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">5.7%</text>
-  <circle cx="446.0" cy="127" r="4.5" fill="#3178c6"/>
-  <text x="458.0" y="131" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">TypeScript</text>
-  <text x="832.0" y="131" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">4.5%</text>
+  <text x="416.0" y="183" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">8.1%</text>
+  <circle cx="446.0" cy="101" r="4.5" fill="#3178c6"/>
+  <text x="458.0" y="105" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">TypeScript</text>
+  <text x="832.0" y="105" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">7.4%</text>
+  <circle cx="446.0" cy="127" r="4.5" fill="#f1e05a"/>
+  <text x="458.0" y="131" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">JavaScript</text>
+  <text x="832.0" y="131" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">5.5%</text>
   <circle cx="446.0" cy="153" r="4.5" fill="#f34b7d"/>
   <text x="458.0" y="157" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">C++</text>
   <text x="832.0" y="157" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">2.5%</text>
   <circle cx="446.0" cy="179" r="4.5" fill="#663399"/>
   <text x="458.0" y="183" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">CSS</text>
-  <text x="832.0" y="183" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">2.3%</text>
+  <text x="832.0" y="183" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">2.4%</text>
 
 </svg>
