@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380"
-     data-version="2026-10-13T16:24:38Z"
-     data-hash="931a9000"
-     data-build="55f9e12">
+     data-version="2026-10-13T21:29:51Z"
+     data-hash="5749caaa"
+     data-build="8a5a8bd">
   <metadata>
-    <generated_at>2026-10-13T16:24:38Z</generated_at>
-    <data_hash>931a9000ffc5f07e56a2510a2812a4c7a48606f8689131ed14a6905d8889464e</data_hash>
-    <data_hash_short>931a9000</data_hash_short>
-    <build_sha>55f9e12</build_sha>
-    <synced>13 OCT 2026 · 16:24 UTC</synced>
+    <generated_at>2026-10-13T21:29:51Z</generated_at>
+    <data_hash>5749caaa75090d725fb60c685f4568603f7e1485f0b3dd9165884212c67adadb</data_hash>
+    <data_hash_short>5749caaa</data_hash_short>
+    <build_sha>8a5a8bd</build_sha>
+    <synced>13 OCT 2026 · 21:29 UTC</synced>
   </metadata>
   <defs>
     <linearGradient id="dash-bg" x1="0" y1="0" x2="880" y2="380">
@@ -87,35 +87,35 @@
 
 
   <!-- Area fill -->
-  <path d="M 56.0,266.7 C 86.5,266.7 86.5,256.0 116.9,256.0 C 147.4,256.0 147.4,249.6 177.8,249.6 C 208.3,249.6 208.3,262.4 238.8,262.4 C 269.2,262.4 269.2,243.2 299.7,243.2 C 330.2,243.2 330.2,230.4 360.6,230.4 C 391.1,230.4 391.1,249.6 421.5,249.6 C 452.0,249.6 452.0,249.6 482.5,249.6 C 512.9,249.6 512.9,249.6 543.4,249.6 C 573.8,249.6 573.8,268.8 604.3,268.8 C 634.8,268.8 634.8,300.8 665.2,300.8 C 695.7,300.8 695.7,300.8 726.2,300.8 C 756.6,300.8 756.6,320.0 787.1,320.0 C 817.5,320.0 817.5,320.0 848.0,320.0 L 848.0,320 L 56.0,320 Z" fill="url(#chart-fill)" opacity="0.9"/>
+  <path d="M 56.0,256.0 C 86.5,256.0 86.5,248.0 116.9,248.0 C 147.4,248.0 147.4,262.4 177.8,262.4 C 208.3,262.4 208.3,243.2 238.8,243.2 C 269.2,243.2 269.2,230.4 299.7,230.4 C 330.2,230.4 330.2,249.6 360.6,249.6 C 391.1,249.6 391.1,249.6 421.5,249.6 C 452.0,249.6 452.0,249.6 482.5,249.6 C 512.9,249.6 512.9,268.8 543.4,268.8 C 573.8,268.8 573.8,300.8 604.3,300.8 C 634.8,300.8 634.8,300.8 665.2,300.8 C 695.7,300.8 695.7,320.0 726.2,320.0 C 756.6,320.0 756.6,320.0 787.1,320.0 C 817.5,320.0 817.5,320.0 848.0,320.0 L 848.0,320 L 56.0,320 Z" fill="url(#chart-fill)" opacity="0.9"/>
 
   <!-- Line -->
-  <path d="M 56.0,266.7 C 86.5,266.7 86.5,256.0 116.9,256.0 C 147.4,256.0 147.4,249.6 177.8,249.6 C 208.3,249.6 208.3,262.4 238.8,262.4 C 269.2,262.4 269.2,243.2 299.7,243.2 C 330.2,243.2 330.2,230.4 360.6,230.4 C 391.1,230.4 391.1,249.6 421.5,249.6 C 452.0,249.6 452.0,249.6 482.5,249.6 C 512.9,249.6 512.9,249.6 543.4,249.6 C 573.8,249.6 573.8,268.8 604.3,268.8 C 634.8,268.8 634.8,300.8 665.2,300.8 C 695.7,300.8 695.7,300.8 726.2,300.8 C 756.6,300.8 756.6,320.0 787.1,320.0 C 817.5,320.0 817.5,320.0 848.0,320.0" fill="none" stroke="url(#chart-stroke)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 56.0,256.0 C 86.5,256.0 86.5,248.0 116.9,248.0 C 147.4,248.0 147.4,262.4 177.8,262.4 C 208.3,262.4 208.3,243.2 238.8,243.2 C 269.2,243.2 269.2,230.4 299.7,230.4 C 330.2,230.4 330.2,249.6 360.6,249.6 C 391.1,249.6 391.1,249.6 421.5,249.6 C 452.0,249.6 452.0,249.6 482.5,249.6 C 512.9,249.6 512.9,268.8 543.4,268.8 C 573.8,268.8 573.8,300.8 604.3,300.8 C 634.8,300.8 634.8,300.8 665.2,300.8 C 695.7,300.8 695.7,320.0 726.2,320.0 C 756.6,320.0 756.6,320.0 787.1,320.0 C 817.5,320.0 817.5,320.0 848.0,320.0" fill="none" stroke="url(#chart-stroke)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Data point highlights -->
-  <circle cx="482.5" cy="249.6" r="2" fill="#64FFDA" opacity="0.6"/>
+  <circle cx="421.5" cy="249.6" r="2" fill="#64FFDA" opacity="0.6"/>
 
 
   <!-- Peak marker -->
-  <circle cx="482.5" cy="249.6" r="3.5" fill="#64FFDA" filter="url(#glow)" opacity="0.9"/>
-  <circle cx="482.5" cy="249.6" r="1.5" fill="#fff"/>
-  <text x="482.5" y="239.6" text-anchor="middle" fill="#64FFDA" font-family="'SF Mono',monospace" font-size="8" font-weight="600">5</text>
+  <circle cx="421.5" cy="249.6" r="3.5" fill="#64FFDA" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="421.5" cy="249.6" r="1.5" fill="#fff"/>
+  <text x="421.5" y="239.6" text-anchor="middle" fill="#64FFDA" font-family="'SF Mono',monospace" font-size="8" font-weight="600">5</text>
 
   <!-- Day labels -->
-  <text x="56.0" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Sep 30</text>
-  <text x="116.9" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 1</text>
-  <text x="177.8" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 2</text>
-  <text x="238.8" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 3</text>
-  <text x="299.7" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 4</text>
-  <text x="360.6" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 5</text>
-  <text x="421.5" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 6</text>
-  <text x="482.5" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 7</text>
-  <text x="543.4" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 8</text>
-  <text x="604.3" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 9</text>
-  <text x="665.2" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 10</text>
-  <text x="726.2" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 11</text>
-  <text x="787.1" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 12</text>
-  <text x="848.0" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 13</text>
+  <text x="56.0" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 1</text>
+  <text x="116.9" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 2</text>
+  <text x="177.8" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 3</text>
+  <text x="238.8" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 4</text>
+  <text x="299.7" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 5</text>
+  <text x="360.6" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 6</text>
+  <text x="421.5" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 7</text>
+  <text x="482.5" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 8</text>
+  <text x="543.4" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 9</text>
+  <text x="604.3" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 10</text>
+  <text x="665.2" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 11</text>
+  <text x="726.2" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 12</text>
+  <text x="787.1" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 13</text>
+  <text x="848.0" y="338" text-anchor="middle" fill="#484F58" font-family="'SF Mono',monospace" font-size="7.5" opacity="0.6">Oct 14</text>
 
 
   <!-- Bottom axis line -->
@@ -125,9 +125,9 @@
   <line x1="56" y1="160" x2="56" y2="320" stroke="#21262D" stroke-width="0.4" opacity="0.3"/>
 
   <!-- Freshness marker -->
-  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 13 OCT 2026 · 16:24 UTC</text>
+  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 13 OCT 2026 · 21:29 UTC</text>
 
   <!-- Sync commit marker -->
-  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA 931a9000 · BUILD 55f9e12</text>
+  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA 5749caaa · BUILD 8a5a8bd</text>
 
 </svg>
