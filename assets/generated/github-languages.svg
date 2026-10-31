@@ -23,7 +23,7 @@
   <rect x="738.7" y="58" width="48.3" height="12" fill="#e34c26"/>
   <rect x="786.9" y="58" width="34.9" height="12" fill="#f1e05a"/>
   <rect x="821.9" y="58" width="18.3" height="12" fill="#663399"/>
-  <rect x="840.2" y="58" width="15.0" height="12" fill="#f34b7d"/>
+  <rect x="840.2" y="58" width="15.8" height="12" fill="#f34b7d"/>
   </g>
 
   <!-- Bar border -->
@@ -53,6 +53,6 @@
   <text x="832.0" y="157" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">2.2%</text>
   <circle cx="446.0" cy="179" r="4.5" fill="#f34b7d"/>
   <text x="458.0" y="183" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">C++</text>
-  <text x="832.0" y="183" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">1.8%</text>
+  <text x="832.0" y="183" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">1.9%</text>
 
 </svg>
