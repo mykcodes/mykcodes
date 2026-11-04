@@ -16,14 +16,14 @@
   <!-- Segmented bar -->
   <rect x="24" y="58" width="832" height="12" rx="6" fill="#1C2128"/>
   <g clip-path="url(#bar-clip)">
-  <rect x="24.0" y="58" width="430.1" height="12" fill="#3572A5"/>
-  <rect x="454.1" y="58" width="134.0" height="12" fill="#DA5B0B"/>
-  <rect x="588.1" y="58" width="101.5" height="12" fill="#00B4AB"/>
-  <rect x="689.6" y="58" width="49.1" height="12" fill="#3178c6"/>
-  <rect x="738.7" y="58" width="48.3" height="12" fill="#e34c26"/>
-  <rect x="786.9" y="58" width="34.9" height="12" fill="#f1e05a"/>
-  <rect x="821.9" y="58" width="18.3" height="12" fill="#663399"/>
-  <rect x="840.2" y="58" width="15.8" height="12" fill="#f34b7d"/>
+  <rect x="24.0" y="58" width="429.3" height="12" fill="#3572A5"/>
+  <rect x="453.3" y="58" width="134.0" height="12" fill="#DA5B0B"/>
+  <rect x="587.3" y="58" width="101.5" height="12" fill="#00B4AB"/>
+  <rect x="688.8" y="58" width="49.1" height="12" fill="#3178c6"/>
+  <rect x="737.9" y="58" width="48.3" height="12" fill="#e34c26"/>
+  <rect x="786.1" y="58" width="34.9" height="12" fill="#f1e05a"/>
+  <rect x="821.1" y="58" width="18.3" height="12" fill="#663399"/>
+  <rect x="839.4" y="58" width="15.8" height="12" fill="#f34b7d"/>
   </g>
 
   <!-- Bar border -->
@@ -32,7 +32,7 @@
   <!-- Language list -->
   <circle cx="30.0" cy="101" r="4.5" fill="#3572A5"/>
   <text x="42.0" y="105" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">Python</text>
-  <text x="416.0" y="105" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">51.7%</text>
+  <text x="416.0" y="105" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">51.6%</text>
   <circle cx="30.0" cy="127" r="4.5" fill="#DA5B0B"/>
   <text x="42.0" y="131" fill="#8B949E" font-family="'SF Mono',monospace" font-size="10.5">Jupyter Notebook</text>
   <text x="416.0" y="131" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="10">16.1%</text>
