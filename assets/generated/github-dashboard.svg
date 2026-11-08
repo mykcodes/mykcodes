@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380"
-     data-version="2026-11-08T08:04:09Z"
-     data-hash="af09b3d6"
-     data-build="0f2cc61">
+     data-version="2026-11-08T15:21:42Z"
+     data-hash="bfae0289"
+     data-build="274af74">
   <metadata>
-    <generated_at>2026-11-08T08:04:09Z</generated_at>
-    <data_hash>af09b3d6194ab10f0b1a5ce927e8e36eb729f2717370eac825cd2f720a210635</data_hash>
-    <data_hash_short>af09b3d6</data_hash_short>
-    <build_sha>0f2cc61</build_sha>
-    <synced>08 NOV 2026 · 08:04 UTC</synced>
+    <generated_at>2026-11-08T15:21:42Z</generated_at>
+    <data_hash>bfae0289539c81d87ef63eb791bd0af8beb85575f4ea3cff1bbcca95db3fa61f</data_hash>
+    <data_hash_short>bfae0289</data_hash_short>
+    <build_sha>274af74</build_sha>
+    <synced>08 NOV 2026 · 15:21 UTC</synced>
   </metadata>
   <defs>
     <linearGradient id="dash-bg" x1="0" y1="0" x2="880" y2="380">
@@ -127,9 +127,9 @@
   <line x1="56" y1="160" x2="56" y2="320" stroke="#21262D" stroke-width="0.4" opacity="0.3"/>
 
   <!-- Freshness marker -->
-  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 08 NOV 2026 · 08:04 UTC</text>
+  <text x="24" y="366" fill="#484F58" font-family="'SF Mono',monospace" font-size="7" letter-spacing="1.5" opacity="0.35">SYNCED 08 NOV 2026 · 15:21 UTC</text>
 
   <!-- Sync commit marker -->
-  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA af09b3d6 · BUILD 0f2cc61</text>
+  <text x="856" y="366" text-anchor="end" fill="#484F58" font-family="'SF Mono',monospace" font-size="6.5" letter-spacing="0.5" opacity="0.2">DATA bfae0289 · BUILD 274af74</text>
 
 </svg>
