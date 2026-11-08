@@ -3,11 +3,11 @@
 <br/>
 <img src="assets/generated/header-stats.svg" alt="GitHub Statistics — performance overview" width="880"/>
 <br/>
-<img src="assets/generated/github-dashboard.svg?v=9ad5b324" alt="GitHub Activity Dashboard — contributions, repos, stars, activity graph" width="880"/>
+<img src="assets/generated/github-dashboard.svg?v=76d71552" alt="GitHub Activity Dashboard — contributions, repos, stars, activity graph" width="880"/>
 <br/>
 <img src="assets/generated/header-toolkit.svg" alt="Toolkit Map — active technologies" width="880"/>
 <br/>
-<img src="assets/generated/github-languages.svg?v=9ad5b324" alt="Language Distribution — code signal" width="880"/>
+<img src="assets/generated/github-languages.svg?v=76d71552" alt="Language Distribution — code signal" width="880"/>
 <br/>
 <img src="assets/generated/stack.svg" alt="Technology stack: Languages, Interface, Backend, AI, Cloud, Security, Design" width="880"/>
 <br/>
@@ -17,9 +17,9 @@
 <br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/generated/github-snake-dark.svg?v=9ad5b324"/>
-  <source media="(prefers-color-scheme: light)" srcset="assets/generated/github-snake.svg?v=9ad5b324"/>
-  <img alt="GitHub contribution graph — snake animation" src="assets/generated/github-snake-dark.svg?v=9ad5b324" width="880"/>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/generated/github-snake-dark.svg?v=76d71552"/>
+  <source media="(prefers-color-scheme: light)" srcset="assets/generated/github-snake.svg?v=76d71552"/>
+  <img alt="GitHub contribution graph — snake animation" src="assets/generated/github-snake-dark.svg?v=76d71552" width="880"/>
 </picture>
 
 <br/> 
